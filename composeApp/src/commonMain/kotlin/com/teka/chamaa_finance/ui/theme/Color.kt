@@ -65,3 +65,22 @@ val md_theme_dark_scrim = Color(0xFF000000)
 
 
 val seed = Color(0xFF006A6C)
+
+val CoffeeBrown = Color(0xFFE2A975)
+val DarkBrown = Color(0xFFA18D7E)
+val DarkGreen = Color(0xFF8F9377)
+
+val Cream2 = Color(0xfff4f0ed)
+val Cream1 = Color(0xFFedeef5)
+
+val MainWhiteColor = Color(0xFFF4F4F4)
+val PureWhiteColor = Color(0xFFFFFFFF)
+
+
+val GreenStart = Color(0xFF11B114)
+val GreenEnd = Color(0xFF52DB59)
+
+
+val PrimaryGreen = Color(0xFF36B46E)
+val PrimaryGreenDark = Color(0xFF36B46E)
+val AccentGreen = Color(0xFF36B46E)
