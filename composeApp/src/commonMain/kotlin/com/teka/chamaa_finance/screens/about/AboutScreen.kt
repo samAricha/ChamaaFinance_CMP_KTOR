@@ -35,6 +35,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import chamaafinance.composeapp.generated.resources.Res
+import chamaafinance.composeapp.generated.resources.chama_base_logo_nobg
 import chamaafinance.composeapp.generated.resources.chamaa_logo_no_bg
 import com.teka.chamaa_finance.ui.theme.Cream1
 import com.teka.chamaa_finance.ui.theme.Cream2
@@ -88,7 +89,7 @@ fun AboutScreen(
                 Spacer(modifier = Modifier.height(20.dp))
                 Box {
                     Image(
-                        painter = painterResource(Res.drawable.chamaa_logo_no_bg),
+                        painter = painterResource(Res.drawable.chama_base_logo_nobg),
                         contentDescription = "Profile Image",
                         modifier = Modifier
                             .size(110.dp)
@@ -185,7 +186,7 @@ fun AboutScreen(
                 Column {
                     when (selectedTabIndex.value) {
                         0 -> {
-                            val items = listOf("iPhone support", "Indicators", "Series", "Targets", "Sharing Notes")
+                            val items = listOf("iOS support", "Payment Automations", "Web Support", "Harmony OS support")
                             items.forEachIndexed { index, item ->
                                 Row(
                                     modifier = Modifier
@@ -291,17 +292,18 @@ fun AboutScreen(
 
             item {
                 val quotes = listOf(
-                    "There is no plan B because there is no planet B. - Ban Ki-moon",
-                    "I want you to act as if the house is on fire, because it is. - Greta Thunberg",
-                    "It always seems impossible until it's done. - Nelson Mandela",
-                    "We realize the importance of our voices only when we are silenced. - Malala Yousafzai",
-                    "We have the means and the capacity to deal with our problems, if only we can find the political will. - Kofi Annan",
-                    "What you do makes a difference, and you have to decide what kind of difference you want to make. - Jane Goodall",
-                    "We can never obtain peace in the outer world until we make peace with ourselves. - The Dalai Lama",
-                    "There is no thing as a single-issue struggle because we do not live single-issue lives. - Audre Lorde",
-                    "The future belongs to those who believe in the beauty of their dreams. - Eleanor Roosevelt",
-                    "The goal is to build a society that is based on justice and equality. - Mahathir Mohamad"
+                    "Many hands make light work. - African Proverb",
+                    "Alone we can do so little; together we can do so much. - Helen Keller",
+                    "If you want to go far, go together. - African Proverb",
+                    "Unity is strength... when there is teamwork and collaboration, wonderful things can be achieved. - Mattie Stepanek",
+                    "Collaboration is the essence of life. The wind, bees, and flowers work together to spread the pollen. - Amit Ray",
+                    "The strength of the team is each individual member. The strength of each member is the team. - Phil Jackson",
+                    "Trust is the glue of life. It’s the most essential ingredient in effective communication and relationships. - Stephen Covey",
+                    "Blockchain builds trust in communities by making processes transparent and secure. - Unknown",
+                    "Innovation is the ability to see change as an opportunity, not a threat. - Steve Jobs",
+                    "The future is built on collaboration and shared resources. - Unknown"
                 )
+
 
                 val currentQuote = remember { mutableStateOf(0) }
 
@@ -330,7 +332,7 @@ fun AboutScreen(
                         text = "\"${quotes[currentQuote.value]}\"",
                         style = MaterialTheme.typography.bodyLarge.copy(
                             fontStyle = FontStyle.Italic,
-                            fontWeight = FontWeight.Bold,
+                            fontWeight = FontWeight.Light,
                             color = MaterialTheme.colorScheme.primary
                         ),
                         modifier = Modifier
