@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import chamaafinance.composeapp.generated.resources.Res
 import chamaafinance.composeapp.generated.resources.chamaa_logo_no_bg
+import chamaafinance.composeapp.generated.resources.green_economy_jar
 import com.teka.chamaa_finance.domain.models.UserData
 import com.teka.chamaa_finance.ui.theme.GreenStart
 import com.teka.chamaa_finance.ui.theme.TextSizeMedium
@@ -59,11 +60,11 @@ fun FeaturedBox(
         ) {
             Spacer(modifier = Modifier.weight(1f))
             Image(
-                painter = painterResource(Res.drawable.chamaa_logo_no_bg),
+                painter = painterResource(Res.drawable.green_economy_jar),
                 contentDescription = "chamaa logo",
                 modifier = Modifier
                     .padding(start = 30.dp)
-                    .size(120.dp),
+                    .size(180.dp),
             )
         }
 
@@ -77,7 +78,7 @@ fun FeaturedBox(
             ) {
                 Text(
                     modifier = Modifier.padding(horizontal = 5.dp),
-                    text = "Heximas Packhouse",
+                    text = "Chamaa DeFi",
                     color = Color.White,
                     fontSize = 22.sp,
                     fontWeight = FontWeight.SemiBold,
@@ -85,7 +86,7 @@ fun FeaturedBox(
                 Spacer(modifier = Modifier.size(0.05.dp))
                 Text(
                     modifier = Modifier.padding(horizontal = 5.dp),
-                    text = "automating packhouses",
+                    text = "stronger together",
                     color = Color.White,
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Light,

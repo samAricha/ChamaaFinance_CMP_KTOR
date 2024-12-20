@@ -34,7 +34,8 @@ fun HomeInfoCard(
     ) {
         Column(
             modifier = Modifier
-                .padding(8.dp),
+                .padding(8.dp)
+                .fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(

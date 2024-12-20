@@ -1,7 +1,5 @@
 import org.gradle.kotlin.dsl.android
-import org.gradle.kotlin.dsl.api
 import org.gradle.kotlin.dsl.compose
-import org.gradle.kotlin.dsl.implementation
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget

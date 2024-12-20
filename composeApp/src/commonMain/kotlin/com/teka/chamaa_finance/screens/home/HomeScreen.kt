@@ -1,6 +1,7 @@
 package com.teka.chamaa_finance.screens.home
 
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -25,8 +27,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -34,6 +38,8 @@ import androidx.navigation.NavController
 import chamaafinance.composeapp.generated.resources.Res
 import chamaafinance.composeapp.generated.resources.chamaa_logo_no_bg
 import chamaafinance.composeapp.generated.resources.customers
+import chamaafinance.composeapp.generated.resources.stock
+import chamaafinance.composeapp.generated.resources.stock_mngnt
 import com.teka.chamaa_finance.domain.models.UserData
 import com.teka.chamaa_finance.screens.home.components.FeaturedBox
 import com.teka.chamaa_finance.screens.home.components.HomeInfoCard
@@ -66,7 +72,7 @@ fun HomeScreen(
 
     val moduleCards = listOf(
         HomeInfoCardData(
-            title = "Fruits",
+            title = "Members",
             value = "0",
             iconRes = Res.drawable.customers,
             color = PrimaryGreen,
@@ -75,18 +81,18 @@ fun HomeScreen(
             }
         ),
         HomeInfoCardData(
-            title = "Customers",
+            title = "Records",
             value = "0",
-            iconRes = Res.drawable.customers,
+            iconRes = Res.drawable.stock_mngnt,
             color = PrimaryGreen,
             onClick = {
 //                navController.navigate(route = AppScreens.CustomerListScreen.route)
             }
         ),
         HomeInfoCardData(
-            title = "Farm Management",
+            title = "Analytics",
             value = "0",
-            iconRes = Res.drawable.customers,
+            iconRes = Res.drawable.stock,
             color = PrimaryGreen,
             onClick = {
 //                navController.navigate(route = AppScreens.FarmManagementModule.route)
@@ -141,7 +147,11 @@ fun HomeScreen(
         }
     ) { padding ->
         Box(
-            modifier = Modifier.fillMaxSize().padding(bottom = padding.calculateBottomPadding())
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(
+                    bottom = padding.calculateBottomPadding()
+                )
         ) {
 
             Column(
@@ -190,15 +200,40 @@ fun HomeScreen(
 
 
             Text(
-                text = "Automating PackHouses",
+                text = "\"Many hands make light work.\"",
                 fontSize = TextSizeLarge,
                 fontFamily = FontFamily.Cursive,
                 fontWeight = FontWeight.ExtraLight,
                 textAlign = TextAlign.Center,
+                fontStyle = FontStyle.Italic,
+                color = Color.Gray,
                 modifier = Modifier
                     .fillMaxWidth()
                     .align(Alignment.BottomCenter)
+                    .background(
+                        color = Color(0xFFF7F7F7),
+                        shape = RoundedCornerShape(8.dp)
+                    )
+                    .padding(16.dp)
+
             )
+
+//            Text(
+//                fontSize = TextSizeLarge,
+//                fontFamily = FontFamily.Cursive,
+//                fontWeight = FontWeight.ExtraLight,
+//                fontStyle = FontStyle.Italic,
+//                textAlign = TextAlign.Center,
+//                color = Color.Gray,
+//                modifier = Modifier
+//                    .fillMaxWidth()
+////                    .padding(horizontal = 16.dp, vertical = 8.dp)
+////                    .background(
+////                        color = Color(0xFFF7F7F7),
+////                        shape = RoundedCornerShape(8.dp)
+////                    )
+////                    .padding(16.dp)
+//            )
         }
     }
 
