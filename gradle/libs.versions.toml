@@ -20,7 +20,7 @@ logback = "1.5.12"
 
 
 room = "2.7.0-alpha11"
-ksp = "2.0.21-1.0.28"
+ksp = "2.1.0-1.0.29"
 sqlite = "2.5.0-SNAPSHOT"
 
 
