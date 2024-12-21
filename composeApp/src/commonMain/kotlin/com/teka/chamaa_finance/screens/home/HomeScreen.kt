@@ -84,7 +84,7 @@ fun HomeScreen(
             iconRes = Res.drawable.customers,
             color = PrimaryGreen,
             onClick = {
-//                navController.navigate(route = AppScreens.FruitListScreen.route)
+                navController.navigate(route = AppDestinations.GroupMembersScreenDestination.route)
             }
         ),
         HomeInfoCardData(
@@ -125,7 +125,7 @@ fun HomeScreen(
                         Image(
                             painter = painterResource(Res.drawable.chama_base_logo_nobg),
                             contentDescription = "App Logo",
-                            modifier = Modifier.size(30.dp)
+                            modifier = Modifier.size(20.dp)
                         )
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(

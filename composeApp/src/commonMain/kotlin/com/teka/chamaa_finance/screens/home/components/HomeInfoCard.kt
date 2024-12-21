@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.teka.chamaa_finance.ui.theme.MainWhiteColor
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 
@@ -30,7 +31,10 @@ fun HomeInfoCard(
         modifier = modifier
             .padding(end = 8.dp),
         elevation = CardDefaults.cardElevation(4.dp),
-        onClick = onClick
+        onClick = onClick,
+        colors = CardDefaults.cardColors(
+            containerColor = MainWhiteColor
+        )
     ) {
         Column(
             modifier = Modifier

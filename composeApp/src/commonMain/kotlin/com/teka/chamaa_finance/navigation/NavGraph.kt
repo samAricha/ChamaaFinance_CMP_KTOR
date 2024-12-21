@@ -8,6 +8,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.teka.chamaa_finance.screens.about.AboutScreen
+import com.teka.chamaa_finance.screens.group_members.GroupMembersScreen
 import com.teka.chamaa_finance.screens.home.HomeScreen
 import com.teka.chamaa_finance.screens.page.CreateNotePage
 import com.teka.chamaa_finance.screens.page.HomePage
@@ -51,11 +52,16 @@ fun NavGraph(navController: NavHostController) {
             HomePage(navController)
         }
 
-
         composable(
             route = AppDestinations.HomeScreenDestination.route,
         ) {
             HomeScreen(navController)
+        }
+
+        composable(
+            route = AppDestinations.GroupMembersScreenDestination.route,
+        ) {
+            GroupMembersScreen(navController)
         }
 
         composable(

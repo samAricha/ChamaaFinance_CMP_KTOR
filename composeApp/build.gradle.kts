@@ -1,5 +1,6 @@
 import org.gradle.kotlin.dsl.android
 import org.gradle.kotlin.dsl.compose
+import org.gradle.kotlin.dsl.implementation
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
@@ -12,6 +13,8 @@ plugins {
 
     alias(libs.plugins.ksp)
     alias(libs.plugins.room)
+
+    alias(libs.plugins.kotlin.serialization)
 }
 
 kotlin {
@@ -58,6 +61,11 @@ kotlin {
 
             implementation(libs.kotlinx.datetime)
             implementation(libs.kottie.animation)
+
+            implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.bundles.ktor)
+
+
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
