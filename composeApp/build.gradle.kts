@@ -37,6 +37,8 @@ kotlin {
             implementation(libs.room.runtime.android)
             implementation(libs.koin.android)
             implementation(libs.koin.androidx.compose)
+
+            implementation(libs.ktor.client.okhttp)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -64,12 +66,13 @@ kotlin {
 
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.bundles.ktor)
-
-
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
             implementation(libs.kotlinx.coroutines.swing)
+
+            implementation(libs.ktor.client.okhttp)
+
         }
     }
 }

@@ -4,14 +4,18 @@ import com.teka.chamaa_finance.data_layer.datasource.NoteLocalDataSource
 import com.teka.chamaa_finance.data_layer.entities.NoteEntity
 
 
-class NoteRepositoryImpl(private val repository: NoteLocalDataSource) : NoteRepository {
-    override suspend fun getAllNotes(): List<NoteEntity> = repository.getAllNotes()
+class NoteRepositoryImpl(
+    private val noteLocalDataSource: NoteLocalDataSource
+) : NoteRepository {
 
-    override suspend fun createNote(note: NoteEntity) = repository.createNote(note)
+    override suspend fun getAllNotes(): List<NoteEntity> = noteLocalDataSource.getAllNotes()
 
-    override suspend fun updateNote(note: NoteEntity) = repository.updateNote(note)
+    override suspend fun createNote(note: NoteEntity) = noteLocalDataSource.createNote(note)
 
-    override suspend fun deleteNote(id: Long) = repository.deleteNote(id)
+    override suspend fun updateNote(note: NoteEntity) = noteLocalDataSource.updateNote(note)
 
-    override suspend fun getNote(id: Long): NoteEntity? = repository.getNote(id)
+    override suspend fun deleteNote(id: Long) = noteLocalDataSource.deleteNote(id)
+
+    override suspend fun getNote(id: Long): NoteEntity? = noteLocalDataSource.getNote(id)
+
 }

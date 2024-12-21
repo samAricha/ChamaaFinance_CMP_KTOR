@@ -7,4 +7,5 @@ sealed class AppDestinations(val route: String) {
     object GroupMembersScreenDestination : AppDestinations("group_members_screen_destination")
     object CreateNotes : AppDestinations("create_note")
     object EditNotes : AppDestinations("edit_note")
+    object CensorDestination : AppDestinations("censor_destination")
 }

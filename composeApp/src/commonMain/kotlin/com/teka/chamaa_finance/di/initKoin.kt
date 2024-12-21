@@ -13,7 +13,8 @@ fun initKoin(config: KoinAppDeclaration? = null) {
             provideDataSourceModule,
             provideRepositoryModule,
             provideViewModelModule,
-            provideUseCaseModule
+            provideUseCaseModule,
+            provideKtorClient
         )
     }
 }

@@ -1,4 +1,4 @@
-package teka.android.chamayetu.data.local.room.entities
+package com.teka.chamaa_finance.data_layer.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

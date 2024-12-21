@@ -104,6 +104,15 @@ fun HomeScreen(
             onClick = {
 //                navController.navigate(route = AppScreens.FarmManagementModule.route)
             }
+        ),
+        HomeInfoCardData(
+            title = "Censor",
+            value = "0",
+            iconRes = Res.drawable.chamaa_logo_no_bg,
+            color = PrimaryGreen,
+            onClick = {
+                navController.navigate(route = AppDestinations.CensorDestination.route)
+            }
         )
 
     )

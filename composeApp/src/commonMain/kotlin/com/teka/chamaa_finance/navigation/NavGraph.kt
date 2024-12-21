@@ -8,6 +8,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.teka.chamaa_finance.screens.about.AboutScreen
+import com.teka.chamaa_finance.screens.censor.CensorScreen
 import com.teka.chamaa_finance.screens.group_members.GroupMembersScreen
 import com.teka.chamaa_finance.screens.home.HomeScreen
 import com.teka.chamaa_finance.screens.page.CreateNotePage
@@ -74,6 +75,12 @@ fun NavGraph(navController: NavHostController) {
             route = AppDestinations.CreateNotes.route,
         ) {
             CreateNotePage(navController)
+        }
+
+        composable(
+            route = AppDestinations.CensorDestination.route,
+        ) {
+            CensorScreen(navController)
         }
 
         composable(
