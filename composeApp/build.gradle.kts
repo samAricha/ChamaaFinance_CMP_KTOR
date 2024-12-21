@@ -1,5 +1,4 @@
 import org.gradle.kotlin.dsl.android
-import org.gradle.kotlin.dsl.api
 import org.gradle.kotlin.dsl.compose
 import org.gradle.kotlin.dsl.implementation
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
@@ -14,6 +13,8 @@ plugins {
 
     alias(libs.plugins.ksp)
     alias(libs.plugins.room)
+
+    alias(libs.plugins.kotlin.serialization)
 }
 
 kotlin {
@@ -36,6 +37,8 @@ kotlin {
             implementation(libs.room.runtime.android)
             implementation(libs.koin.android)
             implementation(libs.koin.androidx.compose)
+
+            implementation(libs.ktor.client.okhttp)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -60,10 +63,16 @@ kotlin {
 
             implementation(libs.kotlinx.datetime)
             implementation(libs.kottie.animation)
+
+            implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.bundles.ktor)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
             implementation(libs.kotlinx.coroutines.swing)
+
+            implementation(libs.ktor.client.okhttp)
+
         }
     }
 }
@@ -95,9 +104,9 @@ android {
     }
 
 
-    ksp {
-        arg("room.schemaLocation", "$projectDir/schemas")
-    }
+//    ksp {
+//        arg("room.schemaLocation", "$projectDir/schemas")
+//    }
 }
 
 dependencies {

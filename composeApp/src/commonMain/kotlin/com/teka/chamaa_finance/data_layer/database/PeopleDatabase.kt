@@ -7,8 +7,7 @@ import com.teka.chamaa_finance.data_layer.entities.PersonEntity
 
 @Database(
     entities = [PersonEntity::class, NoteEntity::class],
-    version = 1,
-    exportSchema = false
+    version = 1
 )
 abstract class PeopleDatabase: RoomDatabase() {
 

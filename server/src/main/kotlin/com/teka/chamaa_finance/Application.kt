@@ -1,10 +1,13 @@
 package com.teka.chamaa_finance
 
+import com.teka.chamaa_finance.model.TaskRepositoryImpl
+import com.teka.chamaa_finance.plugins.configureDataBase
+import com.teka.chamaa_finance.plugins.configureRouting
+import com.teka.organiks.plugins.configureSerialization
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
-import io.ktor.server.response.*
-import io.ktor.server.routing.*
+
 
 fun main() {
     embeddedServer(Netty, port = SERVER_PORT, host = "0.0.0.0", module = Application::module)
@@ -12,9 +15,10 @@ fun main() {
 }
 
 fun Application.module() {
-    routing {
-        get("/") {
-            call.respondText("Ktor: ${Greeting().greet()}")
-        }
-    }
+    val repository = TaskRepositoryImpl()
+
+    configureSerialization()
+    configureDataBase()
+    configureRouting(repository)
 }
+
