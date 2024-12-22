@@ -2,7 +2,7 @@ package com.teka.chamaa_finance.model;
 
 import kotlinx.serialization.Serializable
 
-
+@Serializable
 enum class Priority {
     Low, Medium, High, Vital
 }

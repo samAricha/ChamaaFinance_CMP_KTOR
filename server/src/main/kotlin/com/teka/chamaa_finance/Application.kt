@@ -4,10 +4,14 @@ import com.teka.chamaa_finance.model.TaskRepositoryImpl
 import com.teka.chamaa_finance.plugins.configureDataBase
 import com.teka.chamaa_finance.plugins.configureRouting
 import com.teka.organiks.plugins.configureSerialization
+import io.github.cdimascio.dotenv.dotenv
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 
+val appDotEnv = dotenv {
+    ignoreIfMissing = true
+}
 
 fun main() {
     embeddedServer(Netty, port = SERVER_PORT, host = "0.0.0.0", module = Application::module)
@@ -21,4 +25,5 @@ fun Application.module() {
     configureDataBase()
     configureRouting(repository)
 }
+
 
