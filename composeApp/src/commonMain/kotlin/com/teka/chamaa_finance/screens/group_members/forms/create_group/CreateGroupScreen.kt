@@ -38,6 +38,7 @@ import com.teka.chamaa_finance.navigation.AppDestinations
 import com.teka.chamaa_finance.ui.theme.appShapes
 import com.teka.chamaa_finance.util.formattedTimeBasedOnTimeFormat
 import com.teka.chamaa_finance.util.today
+import com.teka.chamaa_finance.widgets.CustomButton
 import com.teka.chamaa_finance.widgets.CustomDateBoxField
 import com.teka.chamaa_finance.widgets.CustomDatePicker
 import com.teka.chamaa_finance.widgets.CustomInputTextField
@@ -226,7 +227,19 @@ fun CreateGroupScreen(
                     ),
                 )
             }
+            item{
+                Spacer(modifier = Modifier.height(16.dp))
+            }
 
+            item {
+                CustomButton (
+                    modifier = Modifier.fillMaxWidth(),
+                    onClick = {
+//                        viewModel.submitGateLogForm()
+                              },
+                    btnText = "Create Group",
+                )
+            }
 
         }
 
