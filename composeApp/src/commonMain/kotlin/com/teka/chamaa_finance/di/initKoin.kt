@@ -14,7 +14,8 @@ fun initKoin(config: KoinAppDeclaration? = null) {
             provideRepositoryModule,
             provideViewModelModule,
             provideUseCaseModule,
-            provideKtorClient
+            provideKtorClient,
+            provideApiService
         )
     }
 }

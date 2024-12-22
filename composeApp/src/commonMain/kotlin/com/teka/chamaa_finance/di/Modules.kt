@@ -9,6 +9,7 @@ import com.teka.chamaa_finance.domain.usecase.DeleteNoteUseCase
 import com.teka.chamaa_finance.domain.usecase.GetAllNotesUseCase
 import com.teka.chamaa_finance.domain.usecase.GetNoteUseCase
 import com.teka.chamaa_finance.domain.usecase.UpdateNoteUseCase
+import com.teka.chamaa_finance.networking.ApiService
 import com.teka.chamaa_finance.networking.InsultCensorClient
 import com.teka.chamaa_finance.networking.createHttpClient
 import com.teka.chamaa_finance.screens.censor.CensorViewModel
@@ -45,7 +46,12 @@ val provideUseCaseModule = module {
     singleOf(::GetNoteUseCase)
 }
 
-
 val provideKtorClient = module {
     singleOf(::InsultCensorClient)
 }
+
+val provideApiService = module {
+    singleOf(::ApiService)
+}
+
+
