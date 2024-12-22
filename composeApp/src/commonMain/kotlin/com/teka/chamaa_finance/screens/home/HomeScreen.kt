@@ -79,7 +79,7 @@ fun HomeScreen(
 
     val moduleCards = listOf(
         HomeInfoCardData(
-            title = "Members",
+            title = "Members/Groups",
             value = "0",
             iconRes = Res.drawable.customers,
             color = PrimaryGreen,

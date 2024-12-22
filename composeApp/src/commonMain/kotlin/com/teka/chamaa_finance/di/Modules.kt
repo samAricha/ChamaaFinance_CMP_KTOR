@@ -11,8 +11,8 @@ import com.teka.chamaa_finance.domain.usecase.GetNoteUseCase
 import com.teka.chamaa_finance.domain.usecase.UpdateNoteUseCase
 import com.teka.chamaa_finance.networking.ApiService
 import com.teka.chamaa_finance.networking.InsultCensorClient
-import com.teka.chamaa_finance.networking.createHttpClient
 import com.teka.chamaa_finance.screens.censor.CensorViewModel
+import com.teka.chamaa_finance.screens.group_members.forms.create_group.CreateGroupViewModel
 import com.teka.chamaa_finance.screens.viewmodel.CreateNoteViewModel
 import com.teka.chamaa_finance.screens.viewmodel.HomeViewModel
 import org.koin.compose.viewmodel.dsl.viewModelOf
@@ -36,6 +36,7 @@ val provideViewModelModule = module {
     viewModelOf(::CreateNoteViewModel)
     viewModelOf(::HomeViewModel)
     viewModelOf(::CensorViewModel)
+    viewModelOf(::CreateGroupViewModel)
 }
 
 val provideUseCaseModule = module {

@@ -28,7 +28,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -37,6 +36,7 @@ import chamaafinance.composeapp.generated.resources.Res
 import chamaafinance.composeapp.generated.resources.chama_base_logo_nobg
 import chamaafinance.composeapp.generated.resources.group
 import com.teka.chamaa_finance.navigation.AppDestinations
+import com.teka.chamaa_finance.screens.group_members.tabs.GroupsTabContent
 import com.teka.chamaa_finance.widgets.CustomTopAppBar
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
@@ -107,9 +107,9 @@ fun GroupMembersScreen(
                 .padding(top = padding.calculateTopPadding())
         ) {
             ScrollableTabRow(
-//                backgroundColor = Color.Transparent,
                 selectedTabIndex = selectedTabIndex.value,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                edgePadding = 0.dp
             ) {
                 Tabs.entries.forEachIndexed { index, currentTab ->
                     Tab(
@@ -129,15 +129,23 @@ fun GroupMembersScreen(
                     .fillMaxWidth()
                     .weight(1f)
             ) {
-                Box(
-                    modifier = Modifier.fillMaxSize(),
-                    contentAlignment = Alignment.Center
-                ) {
-                    /**
-                     * @TODO render page based on selectedTabIndex
-                     */
-                    Text(text = Tabs.entries[selectedTabIndex.value].text)
+                when (Tabs.entries[selectedTabIndex.value]) {
+                    Tabs.Groups -> GroupsTabContent(navController = navController)
+                    else -> {
+                        Box(
+                            modifier = Modifier.fillMaxSize(),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            /**
+                             * @TODO render page based on selectedTabIndex
+                             */
+                            Text(text = Tabs.entries[selectedTabIndex.value].text)
+                        }
+                    }
                 }
+
+
+
             }
         }
 
@@ -150,7 +158,7 @@ fun GroupMembersScreen(
 
 enum class Tabs(val text: String) {
     Explore("Explore"),
-    Missions("Missions"),
+    Groups("Groups"),
     HumansInSpace("Humans in Space"),
     EarthAndClimate("Earth & Climate"),
     TheSolarSystem("The Solar System"),

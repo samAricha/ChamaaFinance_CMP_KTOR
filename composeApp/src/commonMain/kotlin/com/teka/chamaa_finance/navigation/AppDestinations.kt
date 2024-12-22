@@ -8,4 +8,5 @@ sealed class AppDestinations(val route: String) {
     object CreateNotes : AppDestinations("create_note")
     object EditNotes : AppDestinations("edit_note")
     object CensorDestination : AppDestinations("censor_destination")
+    object CreateGroupDestination : AppDestinations("create_group_destination")
 }
