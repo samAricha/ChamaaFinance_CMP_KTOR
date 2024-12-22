@@ -26,11 +26,13 @@ dependencies {
     implementation("io.ktor:ktor-serialization-kotlinx-json-jvm")
     implementation("io.ktor:ktor-server-netty-jvm")
 
-    //exposed+mysql
+    //exposed+mysql/postgresql
     implementation("mysql:mysql-connector-java:8.0.33")
     implementation("org.jetbrains.exposed:exposed-core:0.46.0")
     implementation("org.jetbrains.exposed:exposed-dao:0.46.0")
     implementation("org.jetbrains.exposed:exposed-jdbc:0.46.0")
+    implementation("org.postgresql:postgresql:42.3.1")
+
 
 
     //dotenv dependency

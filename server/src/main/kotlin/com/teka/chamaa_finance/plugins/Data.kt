@@ -12,9 +12,10 @@ import org.jetbrains.exposed.sql.transactions.transaction
 
 fun Application.configureDataBase() {
     val database: Database = Database.connect(
-        url ="jdbc:mysql://localhost:3306/organiks",
-        user = "root",
-        password = ""
+        "jdbc:postgresql://127.0.0.1:5432/chamaa",
+//        url ="jdbc:mysql://localhost:3306/organiks",
+        user = "postgres",
+        password = "toor"
     )
     val taskRepository: TaskRepository = TaskRepositoryImpl()
 
