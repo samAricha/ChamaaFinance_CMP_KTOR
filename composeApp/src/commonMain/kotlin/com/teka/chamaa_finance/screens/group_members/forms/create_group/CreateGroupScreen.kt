@@ -147,7 +147,8 @@ fun CreateGroupScreen(
         LazyColumn(
             modifier = Modifier
                 .padding(top = padding.calculateTopPadding(), start = 8.dp, end = 8.dp)
-                .fillMaxSize()
+                .fillMaxSize(),
+            verticalArrangement = Arrangement.spacedBy(6.dp)
         ){
             item{
                 Spacer(modifier = Modifier.height(8.dp))
@@ -191,11 +192,7 @@ fun CreateGroupScreen(
                     onValueChange = {
                         viewModel.updateStringField(CreateGroupUiState::groupName, it)
                     },
-                    placeholder = {
-                        Text(
-                            text = "Enter Chamaa Name ..."
-                        )
-                    },
+                    placeholderText = "Enter Chamaa Name ...",
                     keyboardOptions = KeyboardOptions.Default.copy(
                         capitalization = KeyboardCapitalization.Words,
                     ),
@@ -214,11 +211,7 @@ fun CreateGroupScreen(
                     onValueChange = {
                         viewModel.updateStringField(CreateGroupUiState::groupDescription, it)
                     },
-                    placeholder = {
-                        Text(
-                            text = "Chamaa Description ..."
-                        )
-                    },
+                    placeholderText = "Describe Chamaa ...",
                     keyboardOptions = KeyboardOptions.Default.copy(
                         capitalization = KeyboardCapitalization.Words,
                     ),

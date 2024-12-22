@@ -28,6 +28,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.teka.chamaa_finance.ui.theme.TextSizeMedium
+import com.teka.chamaa_finance.ui.theme.TextSizeSmall
 import com.teka.chamaa_finance.ui.theme.appShapes
 import com.teka.chamaa_finance.util.TextFieldStateMngr
 import kotlinx.coroutines.CoroutineScope
@@ -43,7 +44,7 @@ import kotlin.text.isNullOrEmpty
 fun CustomInputTextField(
     modifier: Modifier = Modifier,
     labelText: String = "",
-    placeholder: (@Composable () -> Unit)? = null,
+    placeholderText: String = "",
     leadingIcon: (@Composable () -> Unit)? = null,
     trailingIcon: (@Composable () -> Unit)? = null,
     value: TextFieldStateMngr,
@@ -100,7 +101,13 @@ fun CustomInputTextField(
                     value.validate()
                 }
             },
-            placeholder = placeholder,
+            placeholder = {
+                Text(
+                    text = "$placeholderText ",
+                    fontSize = TextSizeMedium,
+                    color = DarkGray
+                )
+            },
             leadingIcon = leadingIcon,
             trailingIcon = trailingIcon,
             textStyle = textStyle,
