@@ -1,10 +1,10 @@
-package com.teka.chamaa_finance.data_layer.dtos
+package com.teka.chamaa_finance.dtos
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ContributionWithNamesDTO(
+data class ContributionDTO(
     @SerialName("id")
     val contributionId: String ="",
     @SerialName("member_id")
@@ -14,9 +14,5 @@ data class ContributionWithNamesDTO(
     @SerialName("contribution_date")
     val contributionDate: String = "",
     @SerialName("contribution_amount")
-    val contributionAmount: String = "",
-    @SerialName("first_name")
-    val firstName: String = "",
-    @SerialName("lastName")
-    val lastName: String = ""
+    val contributionAmount: String = ""
 )

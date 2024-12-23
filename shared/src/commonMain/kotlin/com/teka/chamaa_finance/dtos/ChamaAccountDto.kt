@@ -1,4 +1,4 @@
-package com.teka.chamaa_finance.data_layer.dtos
+package com.teka.chamaa_finance.dtos
 
 import kotlinx.serialization.Serializable
 

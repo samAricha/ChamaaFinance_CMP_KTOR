@@ -1,9 +1,8 @@
-package teka.android.chamayetu.data.local.room.entities
+package com.teka.chamaa_finance.data_layer.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Embedded
-import com.teka.chamaa_finance.data_layer.entities.ContributionEntity
-import com.teka.chamaa_finance.data_layer.dtos.ContributionWithNamesDTO
+import com.teka.chamaa_finance.dtos.ContributionWithNamesDTO
 
 data class ContributionWithMemberName(
     @Embedded val contributionEntity: ContributionEntity,
