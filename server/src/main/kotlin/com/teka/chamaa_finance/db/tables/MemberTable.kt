@@ -9,12 +9,13 @@ import org.jetbrains.exposed.dao.id.EntityID
 
 // Table Definition
 object MemberTable : IntIdTable("member") {
-    val memberId = varchar("member_id", 50)
+    val memberId = varchar("member_id", 50).uniqueIndex()
     val firstName = varchar("first_name", 100)
     val lastName = varchar("last_name", 100)
     val phone = varchar("phone", 15)
     val dateJoined = varchar("date_joined", 50)
 }
+
 
 // DAO Definition
 class MemberDAO(id: EntityID<Int>) : IntEntity(id) {

@@ -1,6 +1,7 @@
 package com.teka.chamaa_finance.domain.repositories.impl
 
 
+import com.teka.chamaa_finance.db.tables.AccountTypeTable
 import com.teka.chamaa_finance.db.tables.TaskDAO
 import com.teka.chamaa_finance.db.tables.TaskTable
 import com.teka.chamaa_finance.db.tables.daoToModel
@@ -39,7 +40,7 @@ class TaskRepositoryImpl : TaskRepository {
     }
 
     override suspend fun removeTask(name: String): Boolean = suspendTransaction {
-        val rowsDeleted = TaskTable.deleteWhere {
+        val rowsDeleted = AccountTypeTable.deleteWhere {
             TaskTable.name eq name
         }
         rowsDeleted == 1

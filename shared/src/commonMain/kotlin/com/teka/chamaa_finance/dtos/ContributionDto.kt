@@ -6,7 +6,9 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class ContributionDTO(
     @SerialName("id")
-    val contributionId: String ="",
+    val contributionId: String ="", 
+    @SerialName("chamaa_id")
+    val chamaaId: String ="",
     @SerialName("member_id")
     val memberId: String = "",
     @SerialName("chamaa_account_id")
