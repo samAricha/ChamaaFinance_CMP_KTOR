@@ -1,4 +1,7 @@
-package com.teka.chamaa_finance.model;
+package com.teka.chamaa_finance.domain.repositories
+
+import com.teka.chamaa_finance.model.Priority
+import com.teka.chamaa_finance.model.Task
 
 interface TaskRepository {
     suspend fun allTasks(): List<Task>

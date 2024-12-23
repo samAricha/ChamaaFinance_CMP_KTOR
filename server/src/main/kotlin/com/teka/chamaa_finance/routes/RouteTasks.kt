@@ -3,7 +3,7 @@ package com.teka.chamaa_finance.routes
 
 import com.teka.chamaa_finance.model.Priority
 import com.teka.chamaa_finance.model.Task
-import com.teka.chamaa_finance.model.TaskRepositoryImpl
+import com.teka.chamaa_finance.domain.repositories.impl.TaskRepositoryImpl
 import com.teka.chamaa_finance.util.GenericResponse
 import io.ktor.http.*
 import io.ktor.server.routing.*

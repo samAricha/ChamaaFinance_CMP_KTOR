@@ -1,13 +1,8 @@
 package com.teka.chamaa_finance.plugins
 
-import com.teka.chamaa_finance.model.Priority
-import com.teka.chamaa_finance.model.Task
-import com.teka.chamaa_finance.model.TaskRepository
+import com.teka.chamaa_finance.domain.repositories.TaskRepository
 import com.teka.chamaa_finance.routes.taskRoutes
-import io.ktor.http.HttpStatusCode
-import io.ktor.serialization.JsonConvertException
 import io.ktor.server.application.*
-import io.ktor.server.request.receive
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 

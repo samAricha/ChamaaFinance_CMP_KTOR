@@ -1,6 +1,6 @@
 package com.teka.chamaa_finance
 
-import com.teka.chamaa_finance.model.TaskRepositoryImpl
+import com.teka.chamaa_finance.domain.repositories.impl.TaskRepositoryImpl
 import com.teka.chamaa_finance.plugins.configureDataBase
 import com.teka.chamaa_finance.plugins.configureRouting
 import com.teka.organiks.plugins.configureSerialization

@@ -2,7 +2,7 @@ package com.teka.chamaa_finance.db.seeders;
 
 import com.teka.chamaa_finance.model.Priority
 import com.teka.chamaa_finance.model.Task
-import com.teka.chamaa_finance.model.TaskRepository
+import com.teka.chamaa_finance.domain.repositories.TaskRepository
 import kotlinx.coroutines.runBlocking
 
 object TaskSeeder {
