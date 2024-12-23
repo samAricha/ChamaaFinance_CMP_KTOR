@@ -3,6 +3,7 @@ package com.teka.chamaa_finance.plugins
 
 import com.teka.chamaa_finance.db.migrations.migration1
 import com.teka.chamaa_finance.db.seeders.TaskSeeder
+import com.teka.chamaa_finance.db.seeders.*
 import com.teka.chamaa_finance.model.TaskRepositoryImpl
 import com.teka.chamaa_finance.model.TaskRepository
 import io.ktor.server.application.*
@@ -24,6 +25,12 @@ fun Application.configureDataBase() {
         migration1()
         //seeders
         TaskSeeder.seed(taskRepository)
+        seedChamaTable()
+        seedChamaMembersTable()
+        seedChamaAccountTable()
+        seedAccountTypeTable()
+        seedMemberTable()
+        seedContributionTable()
     }
 
 }

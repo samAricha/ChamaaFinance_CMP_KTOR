@@ -1,11 +1,8 @@
 package com.teka.chamaa_finance.db.seeders;
 
-import com.teka.chamaa_finance.db.TaskTable
 import com.teka.chamaa_finance.model.Priority
 import com.teka.chamaa_finance.model.Task
 import com.teka.chamaa_finance.model.TaskRepository
-import org.jetbrains.exposed.sql.*
-import org.jetbrains.exposed.sql.transactions.transaction
 import kotlinx.coroutines.runBlocking
 
 object TaskSeeder {

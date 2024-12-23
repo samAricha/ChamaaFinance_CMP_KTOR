@@ -1,10 +1,10 @@
 package com.teka.chamaa_finance.model;
 
 
-import com.teka.chamaa_finance.db.TaskDAO
-import com.teka.chamaa_finance.db.TaskTable
-import com.teka.chamaa_finance.db.daoToModel
-import com.teka.chamaa_finance.db.suspendTransaction
+import com.teka.chamaa_finance.db.tables.TaskDAO
+import com.teka.chamaa_finance.db.tables.TaskTable
+import com.teka.chamaa_finance.db.tables.daoToModel
+import com.teka.chamaa_finance.db.tables.suspendTransaction
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.deleteWhere
 

@@ -4,6 +4,7 @@ package com.teka.chamaa_finance.routes
 import com.teka.chamaa_finance.model.Priority
 import com.teka.chamaa_finance.model.Task
 import com.teka.chamaa_finance.model.TaskRepositoryImpl
+import com.teka.chamaa_finance.util.GenericResponse
 import io.ktor.http.*
 import io.ktor.server.routing.*
 import io.ktor.serialization.JsonConvertException
@@ -26,7 +27,14 @@ fun Route.taskRoutes() {
         get("/byName/{taskName}") {
             val name = call.parameters["taskName"]
             if (name == null) {
-                call.respond(HttpStatusCode.BadRequest)
+                call.respond(
+                    HttpStatusCode.BadRequest,
+                    GenericResponse(
+                        isSuccess = true,
+                        message = "bad request",
+                        data = null
+                    )
+                )
                 return@get
             }
             val task = repository.taskByName(name)
@@ -40,7 +48,9 @@ fun Route.taskRoutes() {
         get("/byPriority/{priority}") {
             val priorityAsText = call.parameters["priority"]
             if (priorityAsText == null) {
-                call.respond(HttpStatusCode.BadRequest)
+                call.respond(
+                    HttpStatusCode.BadRequest
+                )
                 return@get
             }
             try {
@@ -49,12 +59,25 @@ fun Route.taskRoutes() {
 
 
                 if (tasks.isEmpty()) {
-                    call.respond(HttpStatusCode.NotFound)
+                    call.respond(
+                        HttpStatusCode.NotFound,
+                        GenericResponse(
+                            isSuccess = false,
+                            message = "task not found",
+                            data = null
+                        )
+                    )
                     return@get
                 }
                 call.respond(tasks)
             } catch (ex: IllegalArgumentException) {
-                call.respond(HttpStatusCode.BadRequest)
+                call.respond(
+                    HttpStatusCode.BadRequest,
+                    GenericResponse(
+                        isSuccess = false,
+                        message = "bad request",
+                        data = "${ex.localizedMessage}"
+                    ))
             }
         }
 

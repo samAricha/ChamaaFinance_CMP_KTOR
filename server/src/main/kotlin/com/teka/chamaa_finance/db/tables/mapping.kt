@@ -1,4 +1,4 @@
-package com.teka.chamaa_finance.db
+package com.teka.chamaa_finance.db.tables
 
 import com.teka.chamaa_finance.model.Priority
 import com.teka.chamaa_finance.model.Task
@@ -24,8 +24,7 @@ class TaskDAO(id: EntityID<Int>) : IntEntity(id) {
     var priority by TaskTable.priority
 }
 
-suspend fun <T> suspendTransaction(block: Transaction.() -> T): T =
-    newSuspendedTransaction(Dispatchers.IO, statement = block)
+
 
 fun daoToModel(dao: TaskDAO) = Task(
     dao.name,
