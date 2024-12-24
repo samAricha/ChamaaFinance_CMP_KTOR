@@ -37,6 +37,7 @@ import chamaafinance.composeapp.generated.resources.Res
 import chamaafinance.composeapp.generated.resources.chama_base_logo_nobg
 import chamaafinance.composeapp.generated.resources.group
 import com.teka.chamaa_finance.navigation.AppDestinations
+import com.teka.chamaa_finance.screens.group_members.tabs.accounts.AccountsTabContent
 import com.teka.chamaa_finance.screens.group_members.tabs.groups.GroupsTabContent
 import com.teka.chamaa_finance.screens.group_members.tabs.members.MembersTabContent
 import com.teka.chamaa_finance.widgets.CustomTopAppBar
@@ -133,21 +134,19 @@ fun GroupMembersScreen(
                 when (Tabs.entries[selectedTabIndex.value]) {
                     Tabs.Groups -> GroupsTabContent(navController = navController)
                     Tabs.Members -> MembersTabContent(navController = navController)
+                    Tabs.Accounts -> AccountsTabContent(navController = navController)
                 }
 
 
 
             }
         }
-
-
     }
-
-
 }
 
 
 enum class Tabs(val text: String) {
     Members("Members"),
     Groups("Groups"),
+    Accounts("Accounts"),
 }

@@ -12,4 +12,5 @@ sealed class AppDestinations(val route: String) {
     object CreateGroupDestination : AppDestinations("create_group_destination")
     object CreateMemberDestination : AppDestinations("create_member_destination")
     object CreateContributionDestination : AppDestinations("create_contribution_destination")
+    object CreateAccountDestination : AppDestinations("create_account_destination")
 }

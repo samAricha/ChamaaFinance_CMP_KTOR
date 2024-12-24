@@ -11,6 +11,7 @@ import com.teka.chamaa_finance.screens.about.AboutScreen
 import com.teka.chamaa_finance.screens.censor.CensorScreen
 import com.teka.chamaa_finance.screens.contribution.contribution_list.ContributionsScreen
 import com.teka.chamaa_finance.screens.group_members.GroupMembersScreen
+import com.teka.chamaa_finance.screens.group_members.forms.create_account.CreateAccountScreen
 import com.teka.chamaa_finance.screens.group_members.forms.create_contribution.CreateContributionScreen
 import com.teka.chamaa_finance.screens.group_members.forms.create_group.CreateGroupScreen
 import com.teka.chamaa_finance.screens.group_members.forms.create_member.CreateMemberScreen
@@ -109,6 +110,12 @@ fun NavGraph(navController: NavHostController) {
             route = AppDestinations.CreateContributionDestination.route,
         ) {
             CreateContributionScreen(navController)
+        }
+
+        composable(
+            route = AppDestinations.CreateAccountDestination.route,
+        ) {
+            CreateAccountScreen(navController)
         }
 
         composable(
