@@ -1,4 +1,4 @@
-package com.teka.chamaa_finance.screens.group_members.forms.create_group
+package com.teka.chamaa_finance.screens.group_members.forms.create_member
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -19,7 +19,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Shapes
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.material3.rememberTimePickerState
@@ -29,6 +28,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardCapitalization
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
@@ -53,11 +53,11 @@ import org.koin.core.annotation.KoinExperimentalAPI
 
 @OptIn(ExperimentalMaterial3Api::class, KoinExperimentalAPI::class)
 @Composable
-fun CreateGroupScreen(
+fun CreateMemberScreen(
     navController: NavHostController
 ) {
-    val viewModel = koinViewModel<CreateGroupViewModel>()
-    val uiState = viewModel.createGroupUiState.collectAsState().value
+    val viewModel = koinViewModel<CreateMemberViewModel>()
+    val uiState = viewModel.createMemberUiState.collectAsState().value
     val showDatePickerDialog = uiState.showDatePicker
 
     val datePickerState = rememberDatePickerState(
@@ -67,11 +67,11 @@ fun CreateGroupScreen(
         CustomDatePicker(
             datePickerState = datePickerState,
             onDismiss = {
-                viewModel.updateModelField(CreateGroupUiState::showDatePicker, false)
+                viewModel.updateModelField(CreateMemberUiState::showDatePicker, false)
             },
             onConfirmDate = {it ->
-                viewModel.updateModelField(CreateGroupUiState::date, it)
-                viewModel.updateModelField(CreateGroupUiState::showDatePicker, false)
+                viewModel.updateModelField(CreateMemberUiState::date, it)
+                viewModel.updateModelField(CreateMemberUiState::showDatePicker, false)
             },
         )
     }
@@ -86,11 +86,11 @@ fun CreateGroupScreen(
             title = "Time",
             state = startTimeState,
             onDismiss = {
-                viewModel.updateModelField(CreateGroupUiState::showTimePicker, false)
+                viewModel.updateModelField(CreateMemberUiState::showTimePicker, false)
             },
             onConfirmStartTime = {time ->
-                viewModel.updateModelField(CreateGroupUiState::time, time)
-                viewModel.updateModelField(CreateGroupUiState::showTimePicker, false)
+                viewModel.updateModelField(CreateMemberUiState::time, time)
+                viewModel.updateModelField(CreateMemberUiState::showTimePicker, false)
             },
         )
     }
@@ -104,7 +104,7 @@ fun CreateGroupScreen(
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
-                            text = "Create Group",
+                            text = "Add Member",
                             color = MaterialTheme.colorScheme.primary,
                             fontWeight = FontWeight.Bold,
                             modifier = Modifier.fillMaxWidth(),
@@ -146,7 +146,12 @@ fun CreateGroupScreen(
 
         LazyColumn(
             modifier = Modifier
-                .padding(top = padding.calculateTopPadding(), start = 8.dp, end = 8.dp)
+                .padding(
+                    top = padding.calculateTopPadding(),
+                    bottom = padding.calculateBottomPadding(),
+                    start = 8.dp,
+                    end = 8.dp
+                )
                 .fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(6.dp)
         ){
@@ -162,7 +167,7 @@ fun CreateGroupScreen(
                         modifier = Modifier.weight(1f),
                         currentTextState = uiState.date.date.toString(),
                         onClick = {
-                            viewModel.updateModelField(CreateGroupUiState::showDatePicker, true)
+                            viewModel.updateModelField(CreateMemberUiState::showDatePicker, true)
                         },
                         textStyle = MaterialTheme.typography.titleSmall.copy(
                             fontSize = 16.sp,
@@ -173,7 +178,7 @@ fun CreateGroupScreen(
                         modifier = Modifier.weight(1f),
                         currentTextState = uiState.time.formattedTimeBasedOnTimeFormat(12),
                         onClick = {
-                            viewModel.updateModelField(CreateGroupUiState::showTimePicker, true)
+                            viewModel.updateModelField(CreateMemberUiState::showTimePicker, true)
                         },
                         textStyle = MaterialTheme.typography.titleSmall.copy(
                             fontSize = 16.sp,
@@ -187,12 +192,12 @@ fun CreateGroupScreen(
                 CustomInputTextField(
                     modifier = Modifier.fillMaxWidth(),
                     maxLines = 1,
-                    labelText = "Chamaa Name",
-                    value = uiState.groupName,
+                    labelText = "First Name",
+                    value = uiState.firstName,
                     onValueChange = {
-                        viewModel.updateStringField(CreateGroupUiState::groupName, it)
+                        viewModel.updateStringField(CreateMemberUiState::firstName, it)
                     },
-                    placeholderText = "Enter Chamaa Name ...",
+                    placeholderText = "Enter First Name ...",
                     keyboardOptions = KeyboardOptions.Default.copy(
                         capitalization = KeyboardCapitalization.Words,
                     ),
@@ -205,13 +210,49 @@ fun CreateGroupScreen(
             item {
                 CustomInputTextField(
                     modifier = Modifier.fillMaxWidth(),
-                    maxLines = 3,
-                    labelText = "Chamaa Description",
-                    value = uiState.groupDescription,
+                    maxLines = 1,
+                    labelText = "Last Name",
+                    value = uiState.lastName,
                     onValueChange = {
-                        viewModel.updateStringField(CreateGroupUiState::groupDescription, it)
+                        viewModel.updateStringField(CreateMemberUiState::lastName, it)
                     },
-                    placeholderText = "Describe Chamaa ...",
+                    placeholderText = "Enter Last Name ...",
+                    keyboardOptions = KeyboardOptions.Default.copy(
+                        capitalization = KeyboardCapitalization.Words,
+                    ),
+                    textStyle = MaterialTheme.typography.titleSmall.copy(
+                        fontSize = 16.sp,
+                    ),
+                )
+            }
+
+            item {
+                CustomInputTextField(
+                    modifier = Modifier.fillMaxWidth(),
+                    maxLines = 1,
+                    labelText = "Phone Number",
+                    value = uiState.phoneNumber,
+                    onValueChange = {
+                        viewModel.updateStringField(CreateMemberUiState::phoneNumber, it)
+                    },
+                    placeholderText = "0711 ...",
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                    textStyle = MaterialTheme.typography.titleSmall.copy(
+                        fontSize = 16.sp,
+                    ),
+                )
+            }
+
+            item {
+                CustomInputTextField(
+                    modifier = Modifier.fillMaxWidth(),
+                    maxLines = 1,
+                    labelText = "Email",
+                    value = uiState.email,
+                    onValueChange = {
+                        viewModel.updateStringField(CreateMemberUiState::email, it)
+                    },
+                    placeholderText = "enter email address ...",
                     keyboardOptions = KeyboardOptions.Default.copy(
                         capitalization = KeyboardCapitalization.Words,
                     ),
@@ -228,7 +269,7 @@ fun CreateGroupScreen(
                 CustomButton (
                     modifier = Modifier.fillMaxWidth(),
                     onClick = {
-                        viewModel.saveGroup()
+//                        viewModel.submitGateLogForm()
                               },
                     btnText = "Create Group",
                 )

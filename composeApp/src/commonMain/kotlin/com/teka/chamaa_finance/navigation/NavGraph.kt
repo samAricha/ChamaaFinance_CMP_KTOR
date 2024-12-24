@@ -11,6 +11,7 @@ import com.teka.chamaa_finance.screens.about.AboutScreen
 import com.teka.chamaa_finance.screens.censor.CensorScreen
 import com.teka.chamaa_finance.screens.group_members.GroupMembersScreen
 import com.teka.chamaa_finance.screens.group_members.forms.create_group.CreateGroupScreen
+import com.teka.chamaa_finance.screens.group_members.forms.create_member.CreateMemberScreen
 import com.teka.chamaa_finance.screens.home.HomeScreen
 import com.teka.chamaa_finance.screens.page.CreateNotePage
 import com.teka.chamaa_finance.screens.page.HomePage
@@ -88,6 +89,12 @@ fun NavGraph(navController: NavHostController) {
             route = AppDestinations.CreateGroupDestination.route,
         ) {
             CreateGroupScreen(navController)
+        }
+
+        composable(
+            route = AppDestinations.CreateMemberDestination.route,
+        ) {
+            CreateMemberScreen(navController)
         }
 
         composable(

@@ -20,6 +20,7 @@ import androidx.compose.material3.ScrollableTabRow
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Tab
+import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
@@ -36,7 +37,8 @@ import chamaafinance.composeapp.generated.resources.Res
 import chamaafinance.composeapp.generated.resources.chama_base_logo_nobg
 import chamaafinance.composeapp.generated.resources.group
 import com.teka.chamaa_finance.navigation.AppDestinations
-import com.teka.chamaa_finance.screens.group_members.tabs.GroupsTabContent
+import com.teka.chamaa_finance.screens.group_members.tabs.groups.GroupsTabContent
+import com.teka.chamaa_finance.screens.group_members.tabs.members.MembersTabContent
 import com.teka.chamaa_finance.widgets.CustomTopAppBar
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
@@ -106,10 +108,9 @@ fun GroupMembersScreen(
                 .fillMaxSize()
                 .padding(top = padding.calculateTopPadding())
         ) {
-            ScrollableTabRow(
+            TabRow(
                 selectedTabIndex = selectedTabIndex.value,
                 modifier = Modifier.fillMaxWidth(),
-                edgePadding = 0.dp
             ) {
                 Tabs.entries.forEachIndexed { index, currentTab ->
                     Tab(
@@ -131,17 +132,7 @@ fun GroupMembersScreen(
             ) {
                 when (Tabs.entries[selectedTabIndex.value]) {
                     Tabs.Groups -> GroupsTabContent(navController = navController)
-                    else -> {
-                        Box(
-                            modifier = Modifier.fillMaxSize(),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            /**
-                             * @TODO render page based on selectedTabIndex
-                             */
-                            Text(text = Tabs.entries[selectedTabIndex.value].text)
-                        }
-                    }
+                    Tabs.Members -> MembersTabContent(navController = navController)
                 }
 
 
@@ -157,13 +148,6 @@ fun GroupMembersScreen(
 
 
 enum class Tabs(val text: String) {
-    Explore("Explore"),
+    Members("Members"),
     Groups("Groups"),
-    HumansInSpace("Humans in Space"),
-    EarthAndClimate("Earth & Climate"),
-    TheSolarSystem("The Solar System"),
-    TheUniverse("The Universe"),
-    Science("Science"),
-    Aeronautics("Aeronautics"),
-    Technology("Technology")
 }

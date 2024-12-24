@@ -1,4 +1,4 @@
-package com.teka.chamaa_finance.data_layer.repository
+package com.teka.chamaa_finance.domain.repositories
 
 import com.teka.chamaa_finance.data_layer.entities.NoteEntity
 

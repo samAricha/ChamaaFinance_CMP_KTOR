@@ -9,7 +9,7 @@ import org.jetbrains.exposed.dao.id.EntityID
 
 // Table Definition
 object ContributionTable : IntIdTable("contribution") {
-    val contributionId = varchar("contribution_id", 30).uniqueIndex()
+    val contributionId = varchar("contribution_id", 30)
     val memberId = varchar("member_id", 50)
     val chamaaId = varchar("chamaa_id", 50)
     val chamaAccountId = varchar("chama_account_id", 50)
