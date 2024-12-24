@@ -1,8 +1,7 @@
 package com.teka.chamaa_finance.data_layer.repository_impl
 
-import com.teka.chamaa_finance.data_layer.datasource.GroupLocalDataSource
+import com.teka.chamaa_finance.data_layer.datasource.def.GroupLocalDataSource
 import com.teka.chamaa_finance.data_layer.entities.ChamaEntity
-import com.teka.chamaa_finance.data_layer.entities.NoteEntity
 import com.teka.chamaa_finance.domain.repositories.GroupRepository
 
 

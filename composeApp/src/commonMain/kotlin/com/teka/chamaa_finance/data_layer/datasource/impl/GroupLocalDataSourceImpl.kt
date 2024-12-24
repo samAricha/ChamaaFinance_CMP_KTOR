@@ -1,8 +1,8 @@
-package com.teka.chamaa_finance.data_layer.datasource
+package com.teka.chamaa_finance.data_layer.datasource.impl
 
 import com.teka.chamaa_finance.data_layer.database.PeopleDatabase
+import com.teka.chamaa_finance.data_layer.datasource.def.GroupLocalDataSource
 import com.teka.chamaa_finance.data_layer.entities.ChamaEntity
-import com.teka.chamaa_finance.data_layer.entities.NoteEntity
 
 
 class GroupLocalDataSourceImpl(private val appDatabase: PeopleDatabase) : GroupLocalDataSource {

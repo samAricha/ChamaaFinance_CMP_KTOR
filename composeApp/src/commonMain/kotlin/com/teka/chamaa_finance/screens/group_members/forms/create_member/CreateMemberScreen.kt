@@ -269,9 +269,9 @@ fun CreateMemberScreen(
                 CustomButton (
                     modifier = Modifier.fillMaxWidth(),
                     onClick = {
-//                        viewModel.submitGateLogForm()
+                        viewModel.saveMember()
                               },
-                    btnText = "Create Group",
+                    btnText = "saveMember",
                 )
             }
 

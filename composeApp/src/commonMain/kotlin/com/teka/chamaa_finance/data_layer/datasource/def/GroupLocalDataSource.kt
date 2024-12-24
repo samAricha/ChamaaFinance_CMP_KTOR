@@ -1,7 +1,6 @@
-package com.teka.chamaa_finance.data_layer.datasource
+package com.teka.chamaa_finance.data_layer.datasource.def
 
 import com.teka.chamaa_finance.data_layer.entities.ChamaEntity
-import com.teka.chamaa_finance.data_layer.entities.NoteEntity
 
 interface GroupLocalDataSource {
     suspend fun getAllGroups(): List<ChamaEntity>

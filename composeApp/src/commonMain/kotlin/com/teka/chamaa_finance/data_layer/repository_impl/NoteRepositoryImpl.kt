@@ -1,6 +1,6 @@
 package com.teka.chamaa_finance.data_layer.repository_impl
 
-import com.teka.chamaa_finance.data_layer.datasource.NoteLocalDataSource
+import com.teka.chamaa_finance.data_layer.datasource.def.NoteLocalDataSource
 import com.teka.chamaa_finance.data_layer.entities.NoteEntity
 import com.teka.chamaa_finance.domain.repositories.NoteRepository
 

@@ -1,7 +1,6 @@
 package com.teka.chamaa_finance.screens.group_members.tabs.members
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -18,14 +17,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import chamaafinance.composeapp.generated.resources.Res
-import chamaafinance.composeapp.generated.resources.group
 import chamaafinance.composeapp.generated.resources.savings_group
-import com.teka.chamaa_finance.data_layer.entities.ChamaEntity
+import com.teka.chamaa_finance.data_layer.entities.MemberEntity
 import com.teka.chamaa_finance.ui.theme.PureWhiteColor
 import com.teka.chamaa_finance.ui.theme.TextSizeMedium
 import com.teka.chamaa_finance.ui.theme.TextSizeXLarge
@@ -37,7 +34,7 @@ import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun MemberItemCard(
-    chamaa: ChamaEntity,
+    member: MemberEntity,
     navController: NavController
 ) {
     Card(
@@ -81,17 +78,17 @@ fun MemberItemCard(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         CustomText(
-                            text = chamaa.chamaName,
+                            text ="${member.firstName} ${member.lastName}",
                             fontWeight = FontWeight.Bold,
                             color = Color.Black,
                             fontSize = TextSizeXLarge
                         )
                         CustomText(
-                            text = chamaa.dateFormed,
+                            text = member.dateJoined,
                             fontSize = TextSizeMedium
                         )
                     }
-                    LabelValueTextWidget(label = "Desc: ", value = chamaa.chamaDescription )
+                    LabelValueTextWidget(label = "Phone: ", value = member.phone )
                 }
             }
             Spacer(modifier = Modifier.height(14.dp))
