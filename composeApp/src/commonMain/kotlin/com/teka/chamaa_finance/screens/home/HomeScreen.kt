@@ -42,6 +42,7 @@ import androidx.navigation.NavController
 import chamaafinance.composeapp.generated.resources.Res
 import chamaafinance.composeapp.generated.resources.chama_base_logo_nobg
 import chamaafinance.composeapp.generated.resources.chamaa_logo_no_bg
+import chamaafinance.composeapp.generated.resources.contribution
 import chamaafinance.composeapp.generated.resources.customers
 import chamaafinance.composeapp.generated.resources.group
 import chamaafinance.composeapp.generated.resources.stock
@@ -88,12 +89,12 @@ fun HomeScreen(
             }
         ),
         HomeInfoCardData(
-            title = "Records",
+            title = "Transactions",
             value = "0",
-            iconRes = Res.drawable.stock_mngnt,
+            iconRes = Res.drawable.contribution,
             color = PrimaryGreen,
             onClick = {
-//                navController.navigate(route = AppScreens.CustomerListScreen.route)
+                navController.navigate(route = AppDestinations.ContributionsScreenDestination.route)
             }
         ),
         HomeInfoCardData(

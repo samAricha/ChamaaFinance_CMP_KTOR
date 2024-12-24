@@ -1,4 +1,4 @@
-package com.teka.chamaa_finance.screens.group_members.forms.create_member
+package com.teka.chamaa_finance.screens.group_members.forms.create_contribution
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -53,11 +53,11 @@ import org.koin.core.annotation.KoinExperimentalAPI
 
 @OptIn(ExperimentalMaterial3Api::class, KoinExperimentalAPI::class)
 @Composable
-fun CreateMemberScreen(
+fun CreateContributionScreen(
     navController: NavHostController
 ) {
-    val viewModel = koinViewModel<CreateMemberViewModel>()
-    val uiState = viewModel.createMemberUiState.collectAsState().value
+    val viewModel = koinViewModel<CreateContributionViewModel>()
+    val uiState = viewModel.createContributionUiState.collectAsState().value
     val showDatePickerDialog = uiState.showDatePicker
 
     val datePickerState = rememberDatePickerState(
@@ -67,11 +67,11 @@ fun CreateMemberScreen(
         CustomDatePicker(
             datePickerState = datePickerState,
             onDismiss = {
-                viewModel.updateModelField(CreateMemberUiState::showDatePicker, false)
+                viewModel.updateModelField(CreateContributionUiState::showDatePicker, false)
             },
             onConfirmDate = {it ->
-                viewModel.updateModelField(CreateMemberUiState::date, it)
-                viewModel.updateModelField(CreateMemberUiState::showDatePicker, false)
+                viewModel.updateModelField(CreateContributionUiState::date, it)
+                viewModel.updateModelField(CreateContributionUiState::showDatePicker, false)
             },
         )
     }
@@ -86,11 +86,11 @@ fun CreateMemberScreen(
             title = "Time",
             state = startTimeState,
             onDismiss = {
-                viewModel.updateModelField(CreateMemberUiState::showTimePicker, false)
+                viewModel.updateModelField(CreateContributionUiState::showTimePicker, false)
             },
             onConfirmStartTime = {time ->
-                viewModel.updateModelField(CreateMemberUiState::time, time)
-                viewModel.updateModelField(CreateMemberUiState::showTimePicker, false)
+                viewModel.updateModelField(CreateContributionUiState::time, time)
+                viewModel.updateModelField(CreateContributionUiState::showTimePicker, false)
             },
         )
     }
@@ -158,6 +158,7 @@ fun CreateMemberScreen(
             item{
                 Spacer(modifier = Modifier.height(8.dp))
             }
+
             item{
                 Row(
                     modifier = Modifier.fillMaxWidth(),
@@ -167,7 +168,7 @@ fun CreateMemberScreen(
                         modifier = Modifier.weight(1f),
                         currentTextState = uiState.date.date.toString(),
                         onClick = {
-                            viewModel.updateModelField(CreateMemberUiState::showDatePicker, true)
+                            viewModel.updateModelField(CreateContributionUiState::showDatePicker, true)
                         },
                         textStyle = MaterialTheme.typography.titleSmall.copy(
                             fontSize = 16.sp,
@@ -178,7 +179,7 @@ fun CreateMemberScreen(
                         modifier = Modifier.weight(1f),
                         currentTextState = uiState.time.formattedTimeBasedOnTimeFormat(12),
                         onClick = {
-                            viewModel.updateModelField(CreateMemberUiState::showTimePicker, true)
+                            viewModel.updateModelField(CreateContributionUiState::showTimePicker, true)
                         },
                         textStyle = MaterialTheme.typography.titleSmall.copy(
                             fontSize = 16.sp,
@@ -195,7 +196,7 @@ fun CreateMemberScreen(
                     labelText = "First Name",
                     value = uiState.firstName,
                     onValueChange = {
-                        viewModel.updateStringField(CreateMemberUiState::firstName, it)
+                        viewModel.updateStringField(CreateContributionUiState::firstName, it)
                     },
                     placeholderText = "Enter First Name ...",
                     keyboardOptions = KeyboardOptions.Default.copy(
@@ -214,7 +215,7 @@ fun CreateMemberScreen(
                     labelText = "Last Name",
                     value = uiState.lastName,
                     onValueChange = {
-                        viewModel.updateStringField(CreateMemberUiState::lastName, it)
+                        viewModel.updateStringField(CreateContributionUiState::lastName, it)
                     },
                     placeholderText = "Enter Last Name ...",
                     keyboardOptions = KeyboardOptions.Default.copy(
@@ -233,7 +234,7 @@ fun CreateMemberScreen(
                     labelText = "Phone Number",
                     value = uiState.phoneNumber,
                     onValueChange = {
-                        viewModel.updateStringField(CreateMemberUiState::phoneNumber, it)
+                        viewModel.updateStringField(CreateContributionUiState::phoneNumber, it)
                     },
                     placeholderText = "0711 ...",
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
@@ -250,7 +251,7 @@ fun CreateMemberScreen(
                     labelText = "Email",
                     value = uiState.email,
                     onValueChange = {
-                        viewModel.updateStringField(CreateMemberUiState::email, it)
+                        viewModel.updateStringField(CreateContributionUiState::email, it)
                     },
                     placeholderText = "enter email address ...",
                     keyboardOptions = KeyboardOptions.Default.copy(
@@ -261,6 +262,7 @@ fun CreateMemberScreen(
                     ),
                 )
             }
+
             item{
                 Spacer(modifier = Modifier.height(16.dp))
             }
@@ -269,7 +271,7 @@ fun CreateMemberScreen(
                 CustomButton (
                     modifier = Modifier.fillMaxWidth(),
                     onClick = {
-                        viewModel.saveMember()
+                        viewModel.saveContribution()
                               },
                     btnText = "Save Contribution",
                 )

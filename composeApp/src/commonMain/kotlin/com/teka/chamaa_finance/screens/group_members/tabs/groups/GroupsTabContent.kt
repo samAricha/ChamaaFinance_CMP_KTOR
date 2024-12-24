@@ -21,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.teka.chamaa_finance.navigation.AppDestinations
+import com.teka.chamaa_finance.widgets.EmptyContent
 import org.koin.compose.viewmodel.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -35,18 +36,23 @@ fun GroupsTabContent(
 
     Box(modifier = Modifier.fillMaxSize()) {
         Column{
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(horizontal = 8.dp)
-                    .background(MaterialTheme.colorScheme.background)
-            ) {
-                itemsIndexed(chamaList) { index, chamaa ->
-                    ChamaaItemCard(
-                        chamaa = chamaa,
-                        navController = navController
-                    )
+            if (chamaList.isNotEmpty()) {
+                LazyColumn(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(horizontal = 8.dp)
+                        .background(MaterialTheme.colorScheme.background)
+                ) {
+                    itemsIndexed(chamaList) { index, chamaa ->
+                        ChamaaItemCard(
+                            chamaa = chamaa,
+                            navController = navController
+                        )
+                    }
                 }
+            }
+            if (chamaList.isEmpty()){
+                EmptyContent(message = "No Groups")
             }
         }
 

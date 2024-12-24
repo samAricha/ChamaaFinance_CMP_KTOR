@@ -10,7 +10,7 @@ import com.teka.chamaa_finance.data_layer.entities.MemberEntity
 
 @Dao
 interface ContributionDao {
-    @Query("SELECT * FROM members")
+    @Query("SELECT * FROM contributions")
     suspend fun getAllContributions(): List<ContributionEntity>
 
     @Update

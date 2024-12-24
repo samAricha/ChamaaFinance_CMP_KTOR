@@ -21,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.teka.chamaa_finance.navigation.AppDestinations
+import com.teka.chamaa_finance.widgets.EmptyContent
 import org.koin.compose.viewmodel.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -34,18 +35,24 @@ fun MembersTabContent(
 
     Box(modifier = Modifier.fillMaxSize()) {
         Column{
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(horizontal = 8.dp)
-                    .background(MaterialTheme.colorScheme.background)
-            ) {
-                itemsIndexed(memberList) { index, member ->
-                    MemberItemCard(
-                        member = member,
-                        navController = navController
-                    )
+            if (memberList.isNotEmpty()) {
+                LazyColumn(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(horizontal = 8.dp)
+                        .background(MaterialTheme.colorScheme.background)
+                ) {
+                    itemsIndexed(memberList) { index, member ->
+                        MemberItemCard(
+                            member = member,
+                            navController = navController
+                        )
+                    }
                 }
+            }
+
+            if (memberList.isEmpty()){
+                EmptyContent(message = "No Members")
             }
         }
 
