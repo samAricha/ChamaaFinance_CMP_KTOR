@@ -4,8 +4,9 @@ import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.transactions.transaction
 import com.teka.chamaa_finance.db.tables.ChamaAccountTable
 
+// Seeder for Chama Account table
 fun seedChamaAccountTable() {
-    transaction {
+    seedTableIfEmpty(ChamaAccountTable) {
         ChamaAccountTable.insert {
             it[chamaAccountId] = "account_1"
             it[chamaId] = "chama_1"

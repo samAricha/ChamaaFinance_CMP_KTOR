@@ -4,8 +4,9 @@ import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.transactions.transaction
 import com.teka.chamaa_finance.db.tables.MemberTable
 
+// Seeder for Member table
 fun seedMemberTable() {
-    transaction {
+    seedTableIfEmpty(MemberTable) {
         MemberTable.insert {
             it[memberId] = "member_1"
             it[firstName] = "John"
@@ -23,3 +24,4 @@ fun seedMemberTable() {
         }
     }
 }
+

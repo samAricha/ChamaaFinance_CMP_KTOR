@@ -4,8 +4,9 @@ import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.transactions.transaction
 import com.teka.chamaa_finance.db.tables.ContributionTable
 
+// Seeder for Contribution table
 fun seedContributionTable() {
-    transaction {
+    seedTableIfEmpty(ContributionTable) {
         ContributionTable.insert {
             it[contributionId] = "contribution_1"
             it[memberId] = "member_1"
@@ -25,3 +26,4 @@ fun seedContributionTable() {
         }
     }
 }
+

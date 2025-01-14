@@ -4,8 +4,9 @@ import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.transactions.transaction
 import com.teka.chamaa_finance.db.tables.AccountTypeTable
 
+// Seeder for Account Type table
 fun seedAccountTypeTable() {
-    transaction {
+    seedTableIfEmpty(AccountTypeTable) {
         AccountTypeTable.insert {
             it[accountTypeId] = 1
             it[accountName] = "Savings Account"
@@ -21,3 +22,4 @@ fun seedAccountTypeTable() {
         }
     }
 }
+
