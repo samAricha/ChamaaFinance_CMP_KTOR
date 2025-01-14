@@ -1,5 +1,6 @@
 package com.teka.chamaa_finance.db.tables;
 
+import com.teka.chamaa_finance.dtos.ChamaAccountDTO
 import com.teka.chamaa_finance.dtos.ChamaDTO
 import com.teka.chamaa_finance.model.Priority
 import com.teka.chamaa_finance.model.Task
@@ -37,6 +38,15 @@ fun daoToChamaDTO(dao: ChamaDAO) = ChamaDTO(
     chamaDescription = dao.chamaDescription,
     dateFormed = dao.dateFormed
 )
+
+fun ChamaDAO.toDTO(): ChamaDTO {
+    return ChamaDTO(
+        chamaId = this.chamaId,
+        chamaName = this.chamaName,
+        chamaDescription = this.chamaDescription,
+        dateFormed = this.dateFormed
+    )
+}
 
 suspend fun ChamaDTO.toDAO(): ChamaDAO = suspendTransaction {
     ChamaDAO.new {

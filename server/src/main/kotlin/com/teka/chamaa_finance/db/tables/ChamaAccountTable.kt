@@ -51,7 +51,7 @@ suspend fun ChamaAccountDTO.toDAO(): ChamaAccountDAO = suspendTransaction {
 
 // Fetch All Chama Accounts
 suspend fun fetchAllChamaAccounts(): List<ChamaAccountDTO> = suspendTransaction {
-    ChamaAccountDAO.all().map { daoToChamaAccountDTO(it) }
+    ChamaAccountDAO.all().map { it.toDTO() }
 }
 
 // Add a New Chama Account

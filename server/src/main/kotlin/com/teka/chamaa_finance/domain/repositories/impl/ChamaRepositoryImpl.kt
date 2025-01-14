@@ -3,6 +3,7 @@ package com.teka.chamaa_finance.domain.repositories.impl
 import com.teka.chamaa_finance.db.tables.ChamaDAO
 import com.teka.chamaa_finance.db.tables.ChamaTable
 import com.teka.chamaa_finance.db.tables.suspendTransaction
+import com.teka.chamaa_finance.db.tables.toDTO
 import com.teka.chamaa_finance.domain.repositories.ChamaaRepository
 import com.teka.chamaa_finance.dtos.ChamaDTO
 import org.jetbrains.exposed.sql.deleteWhere
@@ -29,14 +30,7 @@ class ChamaRepositoryImpl : ChamaaRepository {
             dateFormed = chamaa.dateFormed
         }
 
-        savedChamaa.to
-
-        ChamaDTO(
-            chamaId = savedChamaa.chamaId,
-            chamaName = savedChamaa.chamaName,
-            chamaDescription = savedChamaa.chamaDescription,
-            dateFormed = savedChamaa.dateFormed
-        )
+        savedChamaa.toDTO()
     }
 
     override suspend fun removeChamaa(id: String): Boolean = suspendTransaction {
