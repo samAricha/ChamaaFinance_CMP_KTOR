@@ -2,6 +2,7 @@ package com.teka.chamaa_finance.routes
 
 
 import com.teka.chamaa_finance.domain.repositories.impl.MemberRepositoryImpl
+import com.teka.chamaa_finance.dtos.ApiResponseHandler
 import com.teka.chamaa_finance.dtos.MemberDTO
 import com.teka.chamaa_finance.util.GenericResponse
 import io.ktor.http.*
@@ -48,12 +49,10 @@ fun Route.memberRoutes() {
         post {
             try {
                 val member = call.receive<MemberDTO>()
-                repository.addMember(member)
-                call.respond(HttpStatusCode.NoContent)
-            } catch (ex: IllegalStateException) {
-                call.respond(HttpStatusCode.BadRequest)
-            } catch (ex: JsonConvertException) {
-                call.respond(HttpStatusCode.BadRequest)
+                val savedMember = repository.addMember(member)
+                call.respond(HttpStatusCode.Created, ApiResponseHandler(true, "SUCCESS", "Member added successfully", savedMember))
+            } catch (ex: Exception) {
+                call.respond(HttpStatusCode.BadRequest, ApiResponseHandler(false, "ERROR", ex.localizedMessage, null))
             }
         }
 

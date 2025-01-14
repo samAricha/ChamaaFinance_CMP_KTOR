@@ -9,11 +9,7 @@ import kotlinx.serialization.json.Json
 
 fun Application.configureSerialization() {
     install(ContentNegotiation) {
-//        json()
-        json(Json {
-            ignoreUnknownKeys = true
-            isLenient = true
-        })
+        json()
     }
     routing {
         get("/json/kotlinx-serialization") {

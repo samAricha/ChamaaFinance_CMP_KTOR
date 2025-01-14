@@ -2,6 +2,7 @@ package com.teka.chamaa_finance.routes
 
 
 import com.teka.chamaa_finance.domain.repositories.impl.ContributionsRepositoryImpl
+import com.teka.chamaa_finance.dtos.ApiResponseHandler
 import com.teka.chamaa_finance.dtos.ContributionDTO
 import com.teka.chamaa_finance.util.GenericResponse
 import io.ktor.http.*
@@ -48,14 +49,13 @@ fun Route.contributionRoutes() {
         post {
             try {
                 val task = call.receive<ContributionDTO>()
-                repository.addContribution(task)
-                call.respond(HttpStatusCode.NoContent)
-            } catch (ex: IllegalStateException) {
-                call.respond(HttpStatusCode.BadRequest)
-            } catch (ex: JsonConvertException) {
-                call.respond(HttpStatusCode.BadRequest)
+                val savedContribution = repository.addContribution(task)
+                call.respond(HttpStatusCode.Created, ApiResponseHandler(true, "SUCCESS", "Contribution added successfully", savedContribution))
+            } catch (ex: Exception) {
+                call.respond(HttpStatusCode.BadRequest, ApiResponseHandler(false, "ERROR", ex.localizedMessage, null))
             }
         }
+
 
         delete("/{contributionId}") {
             val id = call.parameters["contributionId"]

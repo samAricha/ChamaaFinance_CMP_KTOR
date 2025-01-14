@@ -10,3 +10,4 @@ data class ApiResponseHandler<T>(
     val message: String?,
     val data: T?
 )
+

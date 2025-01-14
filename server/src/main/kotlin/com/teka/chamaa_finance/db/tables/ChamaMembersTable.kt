@@ -24,6 +24,14 @@ fun daoToChamaMembersDTO(dao: ChamaMembersDAO) = ChamaMembersDTO(
     memberId = dao.memberId
 )
 
+fun ChamaMembersDAO.toDTO(): ChamaMembersDTO {
+    return ChamaMembersDTO(
+        chamaId = this.chamaId,
+        memberId = this.memberId
+    )
+}
+
+
 suspend fun ChamaMembersDTO.toDAO(): ChamaMembersDAO = suspendTransaction {
     ChamaMembersDAO.new {
         chamaId = this@toDAO.chamaId

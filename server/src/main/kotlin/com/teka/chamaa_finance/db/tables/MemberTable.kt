@@ -39,6 +39,18 @@ fun daoToMemberDTO(dao: MemberDAO) = MemberDTO(
     dateJoined = dao.dateJoined
 )
 
+
+fun MemberDAO.toDTO(): MemberDTO {
+    return MemberDTO(
+        memberId = this.memberId,
+        firstName = this.firstName,
+        lastName = this.lastName,
+        phone = this.phone,
+        dateJoined = this.dateJoined
+    )
+}
+
+
 // DTO to DAO Converter
 suspend fun MemberDTO.toDAO(): MemberDAO = suspendTransaction {
     MemberDAO.new {

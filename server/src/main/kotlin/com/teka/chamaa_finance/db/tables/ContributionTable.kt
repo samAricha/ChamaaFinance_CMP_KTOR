@@ -40,6 +40,18 @@ fun daoToContributionDTO(dao: ContributionDAO) = ContributionDTO(
     contributionAmount = dao.contributionAmount
 )
 
+fun ContributionDAO.toDTO(): ContributionDTO {
+    return ContributionDTO(
+        contributionId = this.contributionId,
+        memberId = this.memberId,
+        chamaAccountId = this.chamaAccountId,
+        chamaaId = this.chamaaId,
+        contributionDate = this.contributionDate,
+        contributionAmount = this.contributionAmount
+    )
+}
+
+
 // DTO to DAO Converter
 suspend fun ContributionDTO.toDAO(): ContributionDAO = suspendTransaction {
     ContributionDAO.new {

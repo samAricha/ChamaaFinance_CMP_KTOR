@@ -21,13 +21,22 @@ class ChamaRepositoryImpl : ChamaaRepository {
             .firstOrNull()
     }
 
-    override suspend fun addChamaa(chamaa: ChamaDTO): Unit = suspendTransaction {
-        ChamaDAO.new {
+    override suspend fun addChamaa(chamaa: ChamaDTO): ChamaDTO = suspendTransaction {
+        val savedChamaa: ChamaDAO = ChamaDAO.new {
             chamaId = chamaa.chamaId
             chamaName = chamaa.chamaName
             chamaDescription = chamaa.chamaDescription
             dateFormed = chamaa.dateFormed
         }
+
+        savedChamaa.to
+
+        ChamaDTO(
+            chamaId = savedChamaa.chamaId,
+            chamaName = savedChamaa.chamaName,
+            chamaDescription = savedChamaa.chamaDescription,
+            dateFormed = savedChamaa.dateFormed
+        )
     }
 
     override suspend fun removeChamaa(id: String): Boolean = suspendTransaction {

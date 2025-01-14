@@ -27,6 +27,7 @@ class ChamaDAO(id: EntityID<Int>) : IntEntity(id) {
     var chamaName by ChamaTable.chamaName
     var chamaDescription by ChamaTable.chamaDescription
     var dateFormed by ChamaTable.dateFormed
+
 }
 
 

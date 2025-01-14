@@ -27,15 +27,16 @@ class ChamaAccountDAO(id: EntityID<Int>) : IntEntity(id) {
 }
 
 
+fun ChamaAccountDAO.toDTO(): ChamaAccountDTO {
+    return ChamaAccountDTO(
+        chamaAccountId = this.chamaAccountId,
+        chamaId = this.chamaId,
+        accountName = this.accountName,
+        accountTypeId = this.accountTypeId,
+        dateFormed = this.dateFormed
+    )
+}
 
-// DAO to DTO Converter
-fun daoToChamaAccountDTO(dao: ChamaAccountDAO) = ChamaAccountDTO(
-    chamaAccountId = dao.chamaAccountId,
-    chamaId = dao.chamaId,
-    accountName = dao.accountName,
-    accountTypeId = dao.accountTypeId,
-    dateFormed = dao.dateFormed
-)
 
 // DTO to DAO Converter
 suspend fun ChamaAccountDTO.toDAO(): ChamaAccountDAO = suspendTransaction {

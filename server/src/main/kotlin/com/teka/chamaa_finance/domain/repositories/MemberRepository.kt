@@ -7,6 +7,6 @@ import com.teka.chamaa_finance.model.Task
 interface MemberRepository {
     suspend fun allMembers(): List<MemberDTO>
     suspend fun memberById(id: String): MemberDTO?
-    suspend fun addMember(member: MemberDTO)
+    suspend fun addMember(member: MemberDTO): MemberDTO
     suspend fun removeMember(id: String): Boolean
 }

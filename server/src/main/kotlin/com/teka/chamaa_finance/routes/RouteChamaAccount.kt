@@ -2,6 +2,7 @@ package com.teka.chamaa_finance.routes
 
 
 import com.teka.chamaa_finance.domain.repositories.impl.ChamaAccountRepositoryImpl
+import com.teka.chamaa_finance.dtos.ApiResponseHandler
 import com.teka.chamaa_finance.dtos.ChamaAccountDTO
 import com.teka.chamaa_finance.util.GenericResponse
 import io.ktor.http.*
@@ -12,6 +13,7 @@ import io.ktor.server.response.respond
 import io.ktor.server.routing.get
 import io.ktor.server.routing.post
 import io.ktor.server.routing.route
+import java.sql.BatchUpdateException
 
 fun Route.chamaAccountRoutes() {
     val repository = ChamaAccountRepositoryImpl()
@@ -47,12 +49,31 @@ fun Route.chamaAccountRoutes() {
         post {
             try {
                 val chamaaAccount = call.receive<ChamaAccountDTO>()
-                repository.addChamaaAccount(chamaaAccount)
-                call.respond(HttpStatusCode.NoContent)
-            } catch (ex: IllegalStateException) {
-                call.respond(HttpStatusCode.BadRequest)
-            } catch (ex: JsonConvertException) {
-                call.respond(HttpStatusCode.BadRequest)
+                val savedChamaaAccount = repository.addChamaaAccount(chamaaAccount)
+
+                val response = ApiResponseHandler(
+                    isSuccessful = true,
+                    status = "OK",
+                    message = "Chama account created successfully.",
+                    data = savedChamaaAccount
+                )
+
+                call.respond(HttpStatusCode.Created, response)
+
+            } catch (ex: Exception) {
+                val errorMessage = when (ex) {
+                    is BatchUpdateException -> "Database error: ${ex.localizedMessage?.split(":")?.last()?.trim() ?: "Unknown database error"}"
+                    else -> ex.localizedMessage ?: "An unexpected error occurred"
+                }
+
+                val response = ApiResponseHandler(
+                    isSuccessful = false,
+                    status = "ERROR",
+                    message = errorMessage,
+                    data = null
+                )
+
+                call.respond(HttpStatusCode.InternalServerError, response)
             }
         }
 

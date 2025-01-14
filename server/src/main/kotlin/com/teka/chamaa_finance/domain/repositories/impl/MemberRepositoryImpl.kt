@@ -5,6 +5,7 @@ import com.teka.chamaa_finance.db.tables.MemberDAO
 import com.teka.chamaa_finance.db.tables.MemberTable
 import com.teka.chamaa_finance.db.tables.daoToMemberDTO
 import com.teka.chamaa_finance.db.tables.suspendTransaction
+import com.teka.chamaa_finance.db.tables.toDTO
 import com.teka.chamaa_finance.domain.repositories.MemberRepository
 import com.teka.chamaa_finance.dtos.MemberDTO
 import org.jetbrains.exposed.sql.deleteWhere
@@ -23,13 +24,15 @@ class MemberRepositoryImpl : MemberRepository {
             .firstOrNull()
     }
 
-    override suspend fun addMember(member: MemberDTO): Unit = suspendTransaction {
-        MemberDAO.new {
+    override suspend fun addMember(member: MemberDTO): MemberDTO = suspendTransaction {
+        val savedMember = MemberDAO.new {
             memberId = member.memberId
             firstName = member.firstName
             lastName = member.lastName
             phone = member.phone
+            dateJoined = member.dateJoined
         }
+        savedMember.toDTO()
     }
 
     override suspend fun removeMember(id: String): Boolean = suspendTransaction {

@@ -2,6 +2,7 @@ package com.teka.chamaa_finance.routes
 
 
 import com.teka.chamaa_finance.domain.repositories.impl.ChamaRepositoryImpl
+import com.teka.chamaa_finance.dtos.ApiResponseHandler
 import com.teka.chamaa_finance.dtos.ChamaDTO
 import com.teka.chamaa_finance.util.GenericResponse
 import io.ktor.http.*
@@ -12,6 +13,7 @@ import io.ktor.server.response.respond
 import io.ktor.server.routing.get
 import io.ktor.server.routing.post
 import io.ktor.server.routing.route
+import java.sql.BatchUpdateException
 
 fun Route.chamaaRoutes() {
     val repository = ChamaRepositoryImpl()
@@ -47,14 +49,36 @@ fun Route.chamaaRoutes() {
         post {
             try {
                 val chamaa = call.receive<ChamaDTO>()
-                repository.addChamaa(chamaa)
-                call.respond(HttpStatusCode.NoContent)
-            } catch (ex: IllegalStateException) {
-                call.respond(HttpStatusCode.BadRequest)
-            } catch (ex: JsonConvertException) {
-                call.respond(HttpStatusCode.BadRequest)
+                val savedChamaa = repository.addChamaa(chamaa)
+
+                val response = ApiResponseHandler(
+                    isSuccessful = true,
+                    status = "OK",
+                    message = "Chama created successfully.",
+                    data = savedChamaa
+                )
+
+                call.respond(HttpStatusCode.Created, response)
+
+            } catch (ex: Exception) {
+                println("chama exception:: $ex")
+
+                val errorMessage = when (ex) {
+                    is BatchUpdateException -> "Database error: ${ex.localizedMessage?.split(":")?.last()?.trim() ?: "Unknown database error"}"
+                    else -> ex.localizedMessage ?: "An unexpected error occurred"
+                }
+
+                val response = ApiResponseHandler(
+                    isSuccessful = false,
+                    status = "ERROR",
+                    message = errorMessage,
+                    data = null
+                )
+
+                call.respond(HttpStatusCode.InternalServerError, response)
             }
         }
+
 
         delete("/{chamaaId}") {
             val id = call.parameters["chamaaId"]
