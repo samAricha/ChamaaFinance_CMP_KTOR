@@ -39,6 +39,9 @@ kotlin {
             implementation(libs.koin.androidx.compose)
 
             implementation(libs.ktor.client.okhttp)
+
+            implementation(libs.core.splashscreen)
+
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -70,7 +73,7 @@ kotlin {
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.bundles.ktor)
 
-            implementation(libs.kotlinX.dateTime)
+//            implementation(libs.kotlinX.dateTime)
 
         }
         desktopMain.dependencies {

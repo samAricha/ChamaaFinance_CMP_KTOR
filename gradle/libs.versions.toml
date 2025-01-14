@@ -29,10 +29,12 @@ koinComposeMultiplatform = "4.0.0"
 navigationCompose = "2.8.0-alpha02"
 lifecycleViewModel = "2.8.7"
 
-kotlinx-datetime = "0.6.0"
+kotlinx-datetime = "0.6.1"
 kottie = "1.9.6-alpha02"
 
 kotlinxDateTime = "0.6.1"
+core-splashscreen = "1.0.1"
+
 
 
 [libraries]
@@ -84,7 +86,8 @@ ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "k
 ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 ktor-client-auth = { module = "io.ktor:ktor-client-auth", version.ref = "ktor" }
 
-kotlinX-dateTime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDateTime" }
+#kotlinX-dateTime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDateTime" }
+core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "core-splashscreen" }
 
 
 [plugins]
