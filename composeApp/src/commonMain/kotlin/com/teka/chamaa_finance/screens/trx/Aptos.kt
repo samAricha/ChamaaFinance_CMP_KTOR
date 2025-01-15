@@ -5,7 +5,6 @@ import xyz.mcxross.kaptos.Aptos
 import xyz.mcxross.kaptos.account.Account
 
 
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -14,15 +13,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import kotlinx.coroutines.launch
 import xyz.mcxross.kaptos.model.Option
 import com.teka.chamaa_finance.screens.trx.model.transfer
 import com.teka.chamaa_finance.screens.trx.components.BalanceRefresher
 
 @Composable
-fun Trx() {
+fun AptosScreen() {
 
     val aptos = remember { Aptos() }
 

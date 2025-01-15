@@ -35,7 +35,9 @@ kottie = "1.9.6-alpha02"
 kotlinxDateTime = "0.6.1"
 core-splashscreen = "1.0.1"
 
-kaptos = "0.1.2-beta"
+#kaptos = "0.1.2-beta"
+kaptos = "1.5.2-SNAPSHOT"
+
 
 
 

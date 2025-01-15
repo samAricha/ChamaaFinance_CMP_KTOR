@@ -24,7 +24,6 @@ abstract class PeopleDatabase: RoomDatabase() {
     abstract fun memberDao(): MemberDao
     abstract fun contributionDao(): ContributionDao
     abstract fun accountDao(): AccountDao
-
 }
 
 // The Room compiler generates the `actual` implementations.
