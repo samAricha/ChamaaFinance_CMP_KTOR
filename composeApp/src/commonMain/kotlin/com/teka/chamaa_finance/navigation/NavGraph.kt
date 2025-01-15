@@ -18,6 +18,7 @@ import com.teka.chamaa_finance.screens.group_members.forms.create_member.CreateM
 import com.teka.chamaa_finance.screens.home.HomeScreen
 import com.teka.chamaa_finance.screens.page.CreateNotePage
 import com.teka.chamaa_finance.screens.page.HomePage
+import com.teka.chamaa_finance.screens.trx.AptosScreen
 import com.teka.chamaa_finance.util.Constant.EDIT_NOTES_ARGUMENT
 
 
@@ -128,6 +129,14 @@ fun NavGraph(navController: NavHostController) {
                 noteId = noteId
             )
         }
+
+
+        composable(
+            route = AppDestinations.AptosScreenDestination.route,
+        ) {
+            AptosScreen()
+        }
+
 
     }
 }

@@ -112,7 +112,7 @@ fun HomeScreen(
             iconRes = Res.drawable.chamaa_logo_no_bg,
             color = PrimaryGreen,
             onClick = {
-                navController.navigate(route = AppDestinations.CensorDestination.route)
+                navController.navigate(route = AppDestinations.AptosScreenDestination.route)
             }
         )
 
