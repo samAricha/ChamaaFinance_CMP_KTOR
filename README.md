@@ -59,16 +59,17 @@ The app is shared between Android, Desktop with Compose Multiplatform and Server
 
 ## Built with
 - [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) - The Kotlin Multiplatform technology is designed to simplify the development of cross-platform projects.
-- [Compose Multiplatform](https://www.jetbrains.com/lp/compose-multiplatform/) -  a modern UI framework for Kotlin that makes building performant and beautiful user interfaces easy and enjoyable.
-- [Ktor Server](https://ktor.io/docs/intellij-idea.html) -  Ktor is an asynchronous framework for creating microservices, web applications.
-- [Ktor Client](https://ktor.io/docs/getting-started-ktor-client.html) -  a multiplatform asynchronous HTTP client, which allows you to make requests and handle responses.
-- [Gemini AI](https://deepmind.google/technologies/gemini) - a multi-modal large language model(LLM) developed by Google DeepMind.
-- [SQLDelight](https://github.com/cashapp/sqldelight) - SQLDelight is an open-source library developed by Cash App (formerly Square, Inc.) for working with SQL databases in Kotlin-based Android and multi-platform applications.
-- [Multiplatform Settings](https://github.com/russhwolf/multiplatform-settings) - A Kotlin Multiplatform library for saving simple key-value data.
+- [Compose Multiplatform](https://www.jetbrains.com/lp/compose-multiplatform/) - A modern UI framework for Kotlin that makes building performant and beautiful user interfaces easy and enjoyable.
+- [Ktor Server](https://ktor.io/docs/intellij-idea.html) - An asynchronous framework for creating microservices and web applications.
+- [Ktor Client](https://ktor.io/docs/getting-started-ktor-client.html) - A multiplatform asynchronous HTTP client, which allows you to make requests and handle responses.
+- [PostgreSQL](https://www.postgresql.org/) - An advanced, enterprise-class, and open-source relational database system.
+- [Room](https://developer.android.com/jetpack/androidx/releases/room) - A database persistence library providing an abstraction layer over SQLite to allow for more robust database access while harnessing the full power of SQLite.
+- [DataStore](https://developer.android.com/jetpack/androidx/releases/datastore) - A Jetpack library that provides a safe and simple way to store key-value pairs or typed objects with protocol buffers.
 - [Koin](https://insert-koin.io/) - The pragmatic Kotlin & Kotlin Multiplatform Dependency Injection framework.
-- [Voyager](https://voyager.adriel.cafe/) - A multiplatform navigation library.
-- [Kotlinx-datetime](https://github.com/Kotlin/kotlinx-datetime) - KotlinX multiplatform date/time library.
-- [Kotlinx-serilization](https://github.com/Kotlin/kotlinx.serialization) - Kotlin multiplatform / multi-format serialization.
+- [Navigation Compose](https://developer.android.com/jetpack/compose/navigation) - A Jetpack Compose library for building navigation in your Android apps.
+- [Kotlinx-datetime](https://github.com/Kotlin/kotlinx-datetime) - A Kotlin Multiplatform date/time library.
+- [Kotlinx-serialization](https://github.com/Kotlin/kotlinx.serialization) - A Kotlin Multiplatform / multi-format serialization library.
+
 
 ## Run project
 ### Android
