@@ -1,17 +1,16 @@
-<p align="center"><img src="art/app_logo.png" alt="MealTime" height="150px"></p>
+<p align="center"><img src="art/chamaa_logo.png" alt="MealTime" height="150px"></p>
 
-# Organiks
-Organiks Platform combines Compose Multiplatform app(Android, Desktop) + KTOR server + Gemini AI aimed at being the digitizing tool for the Agricultural Sector which has been neglected
-in terms of Technology here in Africa which.
+The Chamaa DeFi Platform combines Compose Multiplatform (Android, Desktop), Ktor server, and Aptos Blockchain to digitize and modernize traditional African savings systems, such as chamaas, stokvels, and esusu, into the world of Decentralized Finance (DeFi).
 
-Organiks is a story of two friends with a Love for Agriculture, one a MicroBiologist and the other a Techie in love with Compose.
+Inspired by traditional community savings practices in Africa, this platform empowers users by providing a secure, decentralized, and transparent system for managing their collective savings and investments. It leverages Aptos blockchain to ensure immutability and verifiability of transactions, bringing the trust and community support inherent in traditional savings groups into the digital age.
 
-The Platform aims at being a Farmers Offline First tool to store their farm records even when offline and when
-they have access to Internet Connection they can backup their data(i.e Offline First) to
-the backend Server also within the project.
+The project is deeply personal to me, inspired by my own experience of how my mother, as a single parent, used a chamaa to pay my school fees. Through the collective efforts of her savings group, she was able to gather enough funds for my education, highlighting the importance of community financial support. My goal is to digitize this practice, giving people better access to a secure and transparent way to manage their group savings.
 
-In combination with Offline First Record Keeping, Organiks has implemented the Gemini AI LLM which acts as a farmers assistant whether they might have doubts
-whether their birds, animals or plants have been attacked by diseases inline with Googles promise of "a world responsibly empowered by AI".
+## Key Features
+1. Aptos Blockchain Integration: By incorporating Aptos blockchain, the platform ensures all transactions are secure, transparent, and decentralized, offering users complete control over their funds.
+2. Cross-Platform: Built using Kotlin Multiplatform, the platform offers a unified experience across Android and Desktop applications, providing tailored user interfaces for each device while maintaining shared business logic.
+3. Ktor Backend: The backend server, built with Ktor, manages user data, handles business logic, and facilitates the secure communication between the app and the blockchain. It also shares DTOs (Data Transfer Objects) between the frontend and backend, ensuring consistent data structures across platforms.
+4. Room for Offline Storage: The platform allows users to store and manage their savings group data offline on Android. When an internet connection is available, the data can be synced to the backend server.
 
 ## 🛠️ Prerequisites 🛠️
 #### IDE
@@ -19,24 +18,23 @@ You can either use [IntelliJ IDEA](https://www.jetbrains.com/idea/) or [Android 
 
 
 
-> For Gemini AI Assistant.
-#### Gemini Api Key
-You can get your key here [Google AI Studio](https://makersuite.google.com/app/prompts/new_freeform) and replace it in GeminiApi.kt file
-in this folder structure(change folder structure to Project from Android) Shared>Src>commonMain>kotlin>com>teka>organiks>feature>ai_assistant>GeminiApi.kt
+# Setup Instructions
+
+### For KTOR Server
+
+#### PostgreSQL Setup
+1. **Install PostgreSQL**: To save data to the database from the **Ktor Server**, you'll need to have **PostgreSQL** installed on your machine. After installation, create a database and obtain your **username** and **password**.
+
+2. **Configure Database Connection**: Once you have your credentials, update the `Data.kt` file with your **username** and **password**. This file is located at:
+
+3. **Create the Database**: Ensure you have a database named `chamaa` created in your PostgreSQL setup.
+
+#### Remote Access with Ngrok
+To access the running backend server remotely on **Android** or **Desktop**, you can use [Ngrok](https://ngrok.com/). Follow the instructions in the [Ngrok Setup Guide](https://ngrok.com/docs/getting-started/?os=macos).
+
+- After setting up Ngrok and obtaining your unique URL, replace the `test_url` under `HttpClientProvider` with your Ngrok URL. You can find the relevant file in the following structure:
 
 
-
-> For KTOR Server.
-#### Mysql for running 
-1. In order to save data to db from KTOR Server you will have to install MySQL on your machine and get the 
-user-name and password after which you replace them in Data.kt plugin file in the following structure
-Server>Src>main>kotlin>com>teka>organiks>plugins>Data.kt
-
-2. In your Mysql Server you will require a database named organiks
-
-3. In order to access you running backend server remotely in your Android or Desktop you can use [Ngrok](https://ngrok.com/) using the following instructions [Ngrok Setup](https://ngrok.com/docs/getting-started/?os=macos)
-  - After setting up your Ngrok and getting your URL, you will have to replace the test_url under HttpClientProvider in the following structure
-    Shared>Src>commonMain>kotlin>com>teka>organiks>core>data>remote>HttpClientProvider
 
 
 ## Screenshots
