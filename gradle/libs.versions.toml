@@ -35,6 +35,9 @@ kottie = "1.9.6-alpha02"
 kotlinxDateTime = "0.6.1"
 core-splashscreen = "1.0.1"
 
+kaptos = "0.1.2-beta"
+
+
 
 
 [libraries]
@@ -88,6 +91,9 @@ ktor-client-auth = { module = "io.ktor:ktor-client-auth", version.ref = "ktor" }
 
 #kotlinX-dateTime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDateTime" }
 core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "core-splashscreen" }
+
+kaptos = { module = "xyz.mcxross.kaptos:kaptos", version.ref = "kaptos" }
+
 
 
 [plugins]

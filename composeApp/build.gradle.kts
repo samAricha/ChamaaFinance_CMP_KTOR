@@ -73,6 +73,9 @@ kotlin {
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.bundles.ktor)
 
+            implementation(libs.kaptos)
+
+
 //            implementation(libs.kotlinX.dateTime)
 
         }
