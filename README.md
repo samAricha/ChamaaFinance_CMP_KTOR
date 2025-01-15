@@ -41,9 +41,9 @@ To access the running backend server remotely on **Android** or **Desktop**, you
 ### Android
 <img src="art/android_screen1.jpeg"  width="250"/>  <img src="art/android_screen2.jpeg"  width="250"/>  <img src="art/android_screen3.jpeg" width="250"/>  <img src="art/android_screen4.jpeg" width="250"/> <img src="art/android_screen5.jpeg" width="250"/> <img src="art/android_screen6.jpeg" width="250"/>
 
-[//]: # (### Desktop)
+### Desktop
 
-[//]: # (<img src="art/dsk_screen1.png"/> <img src="art/dsk_screen2.png"/>  <img src="art/dsk_screen3.png"/>  <img src="art/dsk_screen4.png"/>)
+<img src="art/dsk_screen1.png"/> <img src="art/dsk_screen2.png"/>  <img src="art/dsk_screen3.png"/>  <img src="art/dsk_screen4.png"/> <img src="art/dsk_screen5.png"/>
 
 ## Architecture
 The app is shared between Android, Desktop with Compose Multiplatform and Server with Ktor within the same project.
