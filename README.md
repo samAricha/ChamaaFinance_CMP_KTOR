@@ -1,6 +1,6 @@
 <p align="center"><img src="art/chamaa_logo.png" alt="MealTime" height="150px"></p>
 
-The Chamaa DeFi Platform combines Compose Multiplatform (Android, Desktop), Ktor server, and Aptos Blockchain to digitize and modernize traditional African savings systems, such as chamaas, stokvels, and esusu, into the world of Decentralized Finance (DeFi).
+The Chamaa DeFi Platform is a Full Stack KotlinMultiplatform(KMP) project that combines Compose Multiplatform (Android, Desktop), Ktor server, and Aptos Blockchain to digitize and modernize traditional African savings systems, such as chamaas, stokvels, and esusu, into the world of Decentralized Finance (DeFi).
 
 Inspired by traditional community savings practices in Africa, this platform empowers users by providing a secure, decentralized, and transparent system for managing their collective savings and investments. It leverages Aptos blockchain to ensure immutability and verifiability of transactions, bringing the trust and community support inherent in traditional savings groups into the digital age.
 
@@ -62,6 +62,8 @@ The app is shared between Android, Desktop with Compose Multiplatform and Server
 - [Compose Multiplatform](https://www.jetbrains.com/lp/compose-multiplatform/) - A modern UI framework for Kotlin that makes building performant and beautiful user interfaces easy and enjoyable.
 - [Ktor Server](https://ktor.io/docs/intellij-idea.html) - An asynchronous framework for creating microservices and web applications.
 - [Ktor Client](https://ktor.io/docs/getting-started-ktor-client.html) - A multiplatform asynchronous HTTP client, which allows you to make requests and handle responses.
+- [Aptos](https://aptoslabs.com/) - One of the fastest growing Layer 1 BlockChain Platform.
+- [Kaptos](https://github.com/mcxross/kaptos/) - Kotlin Multiplatform SDK for Aptos.
 - [PostgreSQL](https://www.postgresql.org/) - An advanced, enterprise-class, and open-source relational database system.
 - [Room](https://developer.android.com/jetpack/androidx/releases/room) - A database persistence library providing an abstraction layer over SQLite to allow for more robust database access while harnessing the full power of SQLite.
 - [DataStore](https://developer.android.com/jetpack/androidx/releases/datastore) - A Jetpack library that provides a safe and simple way to store key-value pairs or typed objects with protocol buffers.
