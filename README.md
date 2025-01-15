@@ -83,7 +83,7 @@ Run the desktop application: `./gradlew :desktop:run`
 To run the KTOR Server:
 - open project and access the Application.kt file under Server Folder 
 - run the main method in the Application.kt file
-- N:B ==> In order to run Ktor Server you will require MySQL installed on your machine and have a DB named organiks
+- N:B ==> In order to run Ktor Server you will require PostgreSQL installed on your machine and have a DB named "chamaa"
 
 
 ## License
