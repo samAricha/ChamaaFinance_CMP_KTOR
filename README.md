@@ -77,7 +77,7 @@ To run the application on android device/emulator:
 - open project in Android Studio and run imported android run configuration
 
 ### Desktop
-Run the desktop application: `./gradlew :desktop:run`
+Run the desktop application: `./gradlew :composeApp:run`
 
 ### Server
 To run the KTOR Server:
