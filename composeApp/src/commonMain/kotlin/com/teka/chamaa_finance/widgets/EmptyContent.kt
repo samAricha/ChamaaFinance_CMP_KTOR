@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import chamaafinance.composeapp.generated.resources.Res
 import chamaafinance.composeapp.generated.resources.chamaa_logo_no_bg
 import com.teka.chamaa_finance.ui.theme.TextSizeLarge
+import com.teka.chamaa_finance.ui.theme.TextSizeXLarge
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 
@@ -34,7 +35,7 @@ fun EmptyContent(
     imageSize: Dp = 120.dp,
     imageAlpha: Float = 0.3f,
     textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
-    fontSize: TextUnit = TextSizeLarge,
+    fontSize: TextUnit = TextSizeXLarge,
     textAlign: TextAlign = TextAlign.Center,
     fontFamily: FontFamily = FontFamily.Cursive,
     contentAlignment: Alignment = Alignment.Center

@@ -2,24 +2,27 @@ package com.teka.chamaa_finance.networking
 
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
-import io.ktor.client.request.get
-import io.ktor.client.request.parameter
 import io.ktor.util.network.UnresolvedAddressException
 import kotlinx.serialization.SerializationException
 import com.teka.chamaa_finance.networking.util.NetworkError
 import com.teka.chamaa_finance.networking.util.NetworkResult
 
 class InsultCensorClient(
-    private val httpClient: HttpClient
+    private val httpClient: HttpClient,
+    private val apiService: ApiService
 ) {
 
     suspend fun censorWords(uncensored: String): NetworkResult<String, NetworkError> {
         val response = try {
-            httpClient.get(
-                urlString = "https://www.purgomalum.com/service/json"
-            ) {
-                parameter("text", uncensored)
-            }
+            apiService.getCensoredText(
+                url = "https://www.purgomalum.com/service/json",
+                parameters = mapOf("text" to uncensored)
+            )
+//            httpClient.get(
+//                urlString = "https://www.purgomalum.com/service/json"
+//            ) {
+//                parameter("text", uncensored)
+//            }
         } catch(e: UnresolvedAddressException) {
             return NetworkResult.Error(NetworkError.NO_INTERNET)
         } catch(e: SerializationException) {

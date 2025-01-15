@@ -39,6 +39,9 @@ kotlin {
             implementation(libs.koin.androidx.compose)
 
             implementation(libs.ktor.client.okhttp)
+
+            implementation(libs.core.splashscreen)
+
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -51,6 +54,9 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
             implementation(projects.shared)
+
+            api(compose.materialIconsExtended)
+
 
             implementation(libs.room.runtime)
             implementation(libs.sqlite.bundled)
@@ -66,6 +72,9 @@ kotlin {
 
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.bundles.ktor)
+
+//            implementation(libs.kotlinX.dateTime)
+
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)

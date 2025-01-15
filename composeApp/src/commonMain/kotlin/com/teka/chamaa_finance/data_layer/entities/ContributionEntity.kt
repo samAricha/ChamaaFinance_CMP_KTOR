@@ -2,7 +2,7 @@ package com.teka.chamaa_finance.data_layer.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.teka.chamaa_finance.data_layer.dtos.ContributionDTO
+import com.teka.chamaa_finance.dtos.ContributionDTO
 import java.util.UUID
 
 @Entity(tableName = "contributions")
