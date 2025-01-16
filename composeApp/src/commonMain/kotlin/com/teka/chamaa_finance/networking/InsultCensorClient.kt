@@ -6,18 +6,20 @@ import io.ktor.util.network.UnresolvedAddressException
 import kotlinx.serialization.SerializationException
 import com.teka.chamaa_finance.networking.util.NetworkError
 import com.teka.chamaa_finance.networking.util.NetworkResult
+import io.ktor.http.HttpMethod
 
 class InsultCensorClient(
     private val httpClient: HttpClient,
     private val apiService: ApiService
 ) {
 
-    suspend fun censorWords(uncensored: String): NetworkResult<String, NetworkError> {
+    suspend fun censorWords2(uncensored: String): NetworkResult<String, NetworkError> {
         val response = try {
             apiService.getCensoredText(
-                url = "https://www.purgomalum.com/service/json",
+                endpoint = "service/json",
                 parameters = mapOf("text" to uncensored)
             )
+
 //            httpClient.get(
 //                urlString = "https://www.purgomalum.com/service/json"
 //            ) {
@@ -42,4 +44,25 @@ class InsultCensorClient(
             else -> NetworkResult.Error(NetworkError.UNKNOWN)
         }
     }
+
+    suspend fun censorWords(uncensored: String): NetworkResult<String, NetworkError> {
+        return try {
+            val result: NetworkResult<CensoredText, NetworkError> = apiService.request(
+                endpoint = "service/json",
+                method = HttpMethod.Get,
+                parameters = mapOf("text" to uncensored),
+                serializer = CensoredText.serializer()
+            )
+
+            when (result) {
+                is NetworkResult.Success -> NetworkResult.Success(result.data.result)
+                is NetworkResult.Error -> result
+            }
+        } catch (e: UnresolvedAddressException) {
+            NetworkResult.Error(NetworkError.NO_INTERNET)
+        } catch (e: SerializationException) {
+            NetworkResult.Error(NetworkError.SERIALIZATION)
+        }
+    }
 }
+
