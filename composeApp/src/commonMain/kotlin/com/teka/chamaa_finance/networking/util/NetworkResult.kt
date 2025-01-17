@@ -1,9 +1,17 @@
 package com.teka.chamaa_finance.networking.util
 
 
-sealed interface NetworkResult<out D, out E: Error> {
-    data class Success<out D>(val data: D): NetworkResult<D, Nothing>
-    data class Error<out E: com.teka.chamaa_finance.networking.util.Error>(val error: E): NetworkResult<Nothing, E>
+//sealed interface NetworkResult<out D, out E: Error> {
+//    data class Success<out D>(val data: D): NetworkResult<D, Nothing>
+//    data class Error<out E: com.teka.chamaa_finance.networking.util.Error>(val error: E): NetworkResult<Nothing, E>
+//}
+
+sealed interface NetworkResult<out D, out E : Error> {
+    data class Success<out D>(val data: D) : NetworkResult<D, Nothing>
+    data class Error<out E : com.teka.chamaa_finance.networking.util.Error>(
+        val error: E,
+        val message: String? = null // Optional second value
+    ) : NetworkResult<Nothing, E>
 }
 
 inline fun <T, E: Error, R> NetworkResult<T, E>.map(map: (T) -> R): NetworkResult<R, E> {
