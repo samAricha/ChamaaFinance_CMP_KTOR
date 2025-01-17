@@ -32,7 +32,7 @@ You can either use [IntelliJ IDEA](https://www.jetbrains.com/idea/) or [Android 
 #### Remote Access with Ngrok
 To access the running backend server remotely on **Android** or **Desktop**, you can use [Ngrok](https://ngrok.com/). Follow the instructions in the [Ngrok Setup Guide](https://ngrok.com/docs/getting-started/?os=macos).
 
-- After setting up Ngrok and obtaining your unique URL, replace the `test_url` under `HttpClientProvider` with your Ngrok URL. You can find the relevant file in the following structure:
+- After setting up Ngrok and obtaining your unique URL, replace the `BASE_URL` in `AppEndpoints`(package com.teka.chamaa_finance.networking.util) with your Ngrok URL:
 
 
 
