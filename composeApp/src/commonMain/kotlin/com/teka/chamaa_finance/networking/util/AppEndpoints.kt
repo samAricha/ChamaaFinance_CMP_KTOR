@@ -3,7 +3,12 @@ package com.teka.chamaa_finance.networking.util;
 object AppEndpoints {
 
     //base url
-    const val BASE_URL = "https://www.purgomalum.com/"
+    const val BASE_URL = "https://b783-105-163-1-171.ngrok-free.app/"
+    const val CENSOR_BASE_URL = "https://www.purgomalum.com/"
+
+    //service names
+    const val CENSOR_SERVICE = "CensorService"
+    const val BACKEND_SERVICE = "BackendService"
 
     // Auth
     const val SIGN_IN = "android_check_user"

@@ -3,7 +3,6 @@ package com.teka.chamaa_finance.screens.group_members.forms.create_contribution
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.teka.chamaa_finance.data_layer.entities.ContributionEntity
-import com.teka.chamaa_finance.data_layer.entities.MemberEntity
 import com.teka.chamaa_finance.data_layer.repository_impl.ContributionRepositoryImpl
 import com.teka.chamaa_finance.util.TextFieldStateMngr
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -28,13 +27,13 @@ class CreateContributionViewModel : ViewModel(), KoinComponent{
 
     fun saveContribution(){
         viewModelScope.launch{
-            val member = ContributionEntity(
+            val contribution = ContributionEntity(
                 memberId = createContributionUiState.value.firstName.text,
                 chamaAccountId = createContributionUiState.value.lastName.text,
                 contributionAmount = createContributionUiState.value.phoneNumber.text,
                 contributionDate = createContributionUiState.value.date.date.toString(),
             )
-            contributionRepository.createContribution(member)
+            contributionRepository.createContribution(contribution)
         }
     }
 

@@ -8,7 +8,9 @@ import io.ktor.client.call.body
 import io.ktor.client.plugins.ClientRequestException
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
+import io.ktor.http.ContentType
 import io.ktor.http.HttpMethod
+import io.ktor.http.contentType
 import io.ktor.util.network.UnresolvedAddressException
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
@@ -60,7 +62,10 @@ class ApiService(
                 this.method = method
                 headers.forEach { (key, value) -> header(key, value) }
                 parameters.forEach { (key, value) -> parameter(key, value) }
-                if (body != null) setBody(body)
+                if (body != null) {
+                    contentType(ContentType.Application.Json)
+                    setBody(body)
+                }
             }
             handleResponse(response, serializer)
         } catch (e: UnresolvedAddressException) {

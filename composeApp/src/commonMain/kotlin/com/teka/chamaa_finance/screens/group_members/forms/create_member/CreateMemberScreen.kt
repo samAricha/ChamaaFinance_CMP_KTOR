@@ -2,6 +2,7 @@ package com.teka.chamaa_finance.screens.group_members.forms.create_member
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -45,6 +46,7 @@ import com.teka.chamaa_finance.widgets.CustomInputTextField
 import com.teka.chamaa_finance.widgets.CustomTimeBoxField
 import com.teka.chamaa_finance.widgets.CustomTimePickerDialog
 import com.teka.chamaa_finance.widgets.CustomTopAppBar
+import com.teka.chamaa_finance.widgets.LoadingScreen
 import kotlinx.datetime.Clock
 import org.jetbrains.compose.resources.painterResource
 import org.koin.compose.viewmodel.koinViewModel
@@ -104,7 +106,7 @@ fun CreateMemberScreen(
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
-                            text = "Add Contribution",
+                            text = "Add New Member",
                             color = MaterialTheme.colorScheme.primary,
                             fontWeight = FontWeight.Bold,
                             modifier = Modifier.fillMaxWidth(),
@@ -144,137 +146,154 @@ fun CreateMemberScreen(
         }
     ) { padding ->
 
-        LazyColumn(
+        Box(
             modifier = Modifier
+                .fillMaxSize()
                 .padding(
                     top = padding.calculateTopPadding(),
-                    bottom = padding.calculateBottomPadding(),
-                    start = 8.dp,
-                    end = 8.dp
+                    bottom = padding.calculateBottomPadding()
                 )
-                .fillMaxSize(),
-            verticalArrangement = Arrangement.spacedBy(6.dp)
-        ){
-            item{
-                Spacer(modifier = Modifier.height(8.dp))
-            }
-            item{
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp)
-                ) {
-                    CustomDateBoxField(
-                        modifier = Modifier.weight(1f),
-                        currentTextState = uiState.date.date.toString(),
-                        onClick = {
-                            viewModel.updateModelField(CreateMemberUiState::showDatePicker, true)
-                        },
-                        textStyle = MaterialTheme.typography.titleSmall.copy(
-                            fontSize = 16.sp,
-                        ),
-                        shape = appShapes.small
+        ) {
+            LazyColumn(
+                modifier = Modifier
+                    .padding(
+                        start = 8.dp,
+                        end = 8.dp
                     )
-                    CustomTimeBoxField(
-                        modifier = Modifier.weight(1f),
-                        currentTextState = uiState.time.formattedTimeBasedOnTimeFormat(12),
-                        onClick = {
-                            viewModel.updateModelField(CreateMemberUiState::showTimePicker, true)
+                    .fillMaxSize(),
+                verticalArrangement = Arrangement.spacedBy(6.dp)
+            ) {
+                item {
+                    Spacer(modifier = Modifier.height(8.dp))
+                }
+                item {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        CustomDateBoxField(
+                            modifier = Modifier.weight(1f),
+                            currentTextState = uiState.date.date.toString(),
+                            onClick = {
+                                viewModel.updateModelField(
+                                    CreateMemberUiState::showDatePicker,
+                                    true
+                                )
+                            },
+                            textStyle = MaterialTheme.typography.titleSmall.copy(
+                                fontSize = 16.sp,
+                            ),
+                            shape = appShapes.small
+                        )
+                        CustomTimeBoxField(
+                            modifier = Modifier.weight(1f),
+                            currentTextState = uiState.time.formattedTimeBasedOnTimeFormat(12),
+                            onClick = {
+                                viewModel.updateModelField(
+                                    CreateMemberUiState::showTimePicker,
+                                    true
+                                )
+                            },
+                            textStyle = MaterialTheme.typography.titleSmall.copy(
+                                fontSize = 16.sp,
+                            ),
+                            shape = appShapes.medium
+                        )
+                    }
+                }
+
+                item {
+                    CustomInputTextField(
+                        modifier = Modifier.fillMaxWidth(),
+                        maxLines = 1,
+                        labelText = "First Name",
+                        value = uiState.firstName,
+                        onValueChange = {
+                            viewModel.updateStringField(CreateMemberUiState::firstName, it)
                         },
+                        placeholderText = "Enter First Name ...",
+                        keyboardOptions = KeyboardOptions.Default.copy(
+                            capitalization = KeyboardCapitalization.Words,
+                        ),
                         textStyle = MaterialTheme.typography.titleSmall.copy(
                             fontSize = 16.sp,
                         ),
-                        shape = appShapes.medium
                     )
                 }
+
+                item {
+                    CustomInputTextField(
+                        modifier = Modifier.fillMaxWidth(),
+                        maxLines = 1,
+                        labelText = "Last Name",
+                        value = uiState.lastName,
+                        onValueChange = {
+                            viewModel.updateStringField(CreateMemberUiState::lastName, it)
+                        },
+                        placeholderText = "Enter Last Name ...",
+                        keyboardOptions = KeyboardOptions.Default.copy(
+                            capitalization = KeyboardCapitalization.Words,
+                        ),
+                        textStyle = MaterialTheme.typography.titleSmall.copy(
+                            fontSize = 16.sp,
+                        ),
+                    )
+                }
+
+                item {
+                    CustomInputTextField(
+                        modifier = Modifier.fillMaxWidth(),
+                        maxLines = 1,
+                        labelText = "Phone Number",
+                        value = uiState.phoneNumber,
+                        onValueChange = {
+                            viewModel.updateStringField(CreateMemberUiState::phoneNumber, it)
+                        },
+                        placeholderText = "0711 ...",
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                        textStyle = MaterialTheme.typography.titleSmall.copy(
+                            fontSize = 16.sp,
+                        ),
+                    )
+                }
+
+                item {
+                    CustomInputTextField(
+                        modifier = Modifier.fillMaxWidth(),
+                        maxLines = 1,
+                        labelText = "Email",
+                        value = uiState.email,
+                        onValueChange = {
+                            viewModel.updateStringField(CreateMemberUiState::email, it)
+                        },
+                        placeholderText = "enter email address ...",
+                        keyboardOptions = KeyboardOptions.Default.copy(
+                            capitalization = KeyboardCapitalization.Words,
+                        ),
+                        textStyle = MaterialTheme.typography.titleSmall.copy(
+                            fontSize = 16.sp,
+                        ),
+                    )
+                }
+                item {
+                    Spacer(modifier = Modifier.height(16.dp))
+                }
+
+                item {
+                    CustomButton(
+                        modifier = Modifier.fillMaxWidth(),
+                        onClick = {
+                            viewModel.saveMember()
+                        },
+                        btnText = "Save Member",
+                    )
+                }
+
             }
 
-            item {
-                CustomInputTextField(
-                    modifier = Modifier.fillMaxWidth(),
-                    maxLines = 1,
-                    labelText = "First Name",
-                    value = uiState.firstName,
-                    onValueChange = {
-                        viewModel.updateStringField(CreateMemberUiState::firstName, it)
-                    },
-                    placeholderText = "Enter First Name ...",
-                    keyboardOptions = KeyboardOptions.Default.copy(
-                        capitalization = KeyboardCapitalization.Words,
-                    ),
-                    textStyle = MaterialTheme.typography.titleSmall.copy(
-                        fontSize = 16.sp,
-                    ),
-                )
+            if (uiState.isSavingFormData) {
+                LoadingScreen()
             }
-
-            item {
-                CustomInputTextField(
-                    modifier = Modifier.fillMaxWidth(),
-                    maxLines = 1,
-                    labelText = "Last Name",
-                    value = uiState.lastName,
-                    onValueChange = {
-                        viewModel.updateStringField(CreateMemberUiState::lastName, it)
-                    },
-                    placeholderText = "Enter Last Name ...",
-                    keyboardOptions = KeyboardOptions.Default.copy(
-                        capitalization = KeyboardCapitalization.Words,
-                    ),
-                    textStyle = MaterialTheme.typography.titleSmall.copy(
-                        fontSize = 16.sp,
-                    ),
-                )
-            }
-
-            item {
-                CustomInputTextField(
-                    modifier = Modifier.fillMaxWidth(),
-                    maxLines = 1,
-                    labelText = "Phone Number",
-                    value = uiState.phoneNumber,
-                    onValueChange = {
-                        viewModel.updateStringField(CreateMemberUiState::phoneNumber, it)
-                    },
-                    placeholderText = "0711 ...",
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                    textStyle = MaterialTheme.typography.titleSmall.copy(
-                        fontSize = 16.sp,
-                    ),
-                )
-            }
-
-            item {
-                CustomInputTextField(
-                    modifier = Modifier.fillMaxWidth(),
-                    maxLines = 1,
-                    labelText = "Email",
-                    value = uiState.email,
-                    onValueChange = {
-                        viewModel.updateStringField(CreateMemberUiState::email, it)
-                    },
-                    placeholderText = "enter email address ...",
-                    keyboardOptions = KeyboardOptions.Default.copy(
-                        capitalization = KeyboardCapitalization.Words,
-                    ),
-                    textStyle = MaterialTheme.typography.titleSmall.copy(
-                        fontSize = 16.sp,
-                    ),
-                )
-            }
-            item{
-                Spacer(modifier = Modifier.height(16.dp))
-            }
-
-            item {
-                CustomButton (
-                    modifier = Modifier.fillMaxWidth(),
-                    onClick = {
-                        viewModel.saveMember()
-                              },
-                    btnText = "Save Contribution",
-                )
-            }
-
         }
 
     }
