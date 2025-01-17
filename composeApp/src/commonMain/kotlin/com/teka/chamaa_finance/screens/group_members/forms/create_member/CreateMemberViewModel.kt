@@ -4,6 +4,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.teka.chamaa_finance.data_layer.entities.MemberEntity
 import com.teka.chamaa_finance.data_layer.repository_impl.MemberRepositoryImpl
+import com.teka.chamaa_finance.dtos.MemberDTO
+import com.teka.chamaa_finance.networking.InsultCensorClient
+import com.teka.chamaa_finance.networking.util.NetworkResult
+import com.teka.chamaa_finance.networking.util.onError
+import com.teka.chamaa_finance.networking.util.onSuccess
 import com.teka.chamaa_finance.util.TextFieldStateMngr
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -18,6 +23,8 @@ import kotlin.reflect.KMutableProperty1
 class CreateMemberViewModel : ViewModel(), KoinComponent{
 
     private val memberRepository: MemberRepositoryImpl by inject()
+    val insultCensorClient: InsultCensorClient by inject()
+
 
 
     // UI state holder
@@ -26,14 +33,35 @@ class CreateMemberViewModel : ViewModel(), KoinComponent{
 
 
     fun saveMember(){
+        val state = _createMemberUiState.value
+
+        val member = MemberDTO(
+            firstName = state.firstName.text,
+            lastName = state.lastName.text,
+            phone = state.phoneNumber.text,
+            dateJoined = state.date.date.toString(),
+        )
+
         viewModelScope.launch{
-            val member = MemberEntity(
-                firstName = createMemberUiState.value.firstName.text,
-                lastName = createMemberUiState.value.lastName.text,
-                phone = createMemberUiState.value.phoneNumber.text,
-                dateJoined = createMemberUiState.value.date.date.toString(),
-            )
-            memberRepository.createMember(member)
+            _createMemberUiState.value = _createMemberUiState.value.copy(isSavingFormData = true)
+
+            val result = insultCensorClient.addMember(member)
+
+            _createMemberUiState.value = when (result) {
+                is NetworkResult.Success -> _createMemberUiState.value.copy(
+                    isSavingFormData = false,
+                    isFormSubmissionSuccessful = true,
+                    errorMessage = ""
+                )
+
+                is NetworkResult.Error -> _createMemberUiState.value.copy(
+                    isSavingFormData = false,
+                    isFormSubmissionSuccessful = false,
+                    errorMessage = result.message ?: "An error occurred"
+                )
+            }
+
+//            memberRepository.createMember(member)
         }
     }
 

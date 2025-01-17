@@ -1,6 +1,5 @@
 package com.teka.chamaa_finance.dtos
 
-import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable

@@ -27,6 +27,10 @@ import com.teka.chamaa_finance.domain.usecase.GetNoteUseCase
 import com.teka.chamaa_finance.domain.usecase.UpdateNoteUseCase
 import com.teka.chamaa_finance.networking.ApiService
 import com.teka.chamaa_finance.networking.InsultCensorClient
+import com.teka.chamaa_finance.networking.util.AppEndpoints.BACKEND_SERVICE
+import com.teka.chamaa_finance.networking.util.AppEndpoints.BASE_URL
+import com.teka.chamaa_finance.networking.util.AppEndpoints.CENSOR_BASE_URL
+import com.teka.chamaa_finance.networking.util.AppEndpoints.CENSOR_SERVICE
 import com.teka.chamaa_finance.screens.censor.CensorViewModel
 import com.teka.chamaa_finance.screens.contribution.contribution_list.ContributionListViewModel
 import com.teka.chamaa_finance.screens.group_members.forms.create_account.CreateAccountViewModel
@@ -38,9 +42,11 @@ import com.teka.chamaa_finance.screens.group_members.tabs.groups.GroupsTabViewMo
 import com.teka.chamaa_finance.screens.group_members.tabs.members.MembersTabViewModel
 import com.teka.chamaa_finance.screens.viewmodel.CreateNoteViewModel
 import com.teka.chamaa_finance.screens.viewmodel.HomeViewModel
+import io.ktor.client.HttpClient
 import org.koin.compose.viewmodel.dsl.viewModelOf
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.singleOf
+import org.koin.core.qualifier.named
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
@@ -90,7 +96,10 @@ val provideKtorClient = module {
 }
 
 val provideApiService = module {
-    singleOf(::ApiService)
+    single { ApiService(get(), BASE_URL) }
+    single(named(CENSOR_SERVICE)) { ApiService(get(), CENSOR_BASE_URL) }
+    single(named(BACKEND_SERVICE)) { ApiService(get(), BASE_URL) }
 }
+
 
 
