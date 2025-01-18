@@ -71,6 +71,7 @@ The app is shared between Android, Desktop with Compose Multiplatform and Server
 - [Navigation Compose](https://developer.android.com/jetpack/compose/navigation) - A Jetpack Compose library for building navigation in your Android apps.
 - [Kotlinx-datetime](https://github.com/Kotlin/kotlinx-datetime) - A Kotlin Multiplatform date/time library.
 - [Kotlinx-serialization](https://github.com/Kotlin/kotlinx.serialization) - A Kotlin Multiplatform / multi-format serialization library.
+- [Exposed](https://jetbrains.github.io/Exposed/home.html) - A Kotlin SQL database library.
 
 
 ## Run project
