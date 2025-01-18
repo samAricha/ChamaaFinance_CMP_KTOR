@@ -2,7 +2,9 @@ package com.teka.chamaa_finance.screens.group_members.forms.create_member
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import co.touchlab.kermit.Logger
 import com.teka.chamaa_finance.data_layer.entities.MemberEntity
+import com.teka.chamaa_finance.data_layer.entities.toEntity
 import com.teka.chamaa_finance.data_layer.repository_impl.MemberRepositoryImpl
 import com.teka.chamaa_finance.dtos.MemberDTO
 import com.teka.chamaa_finance.networking.InsultCensorClient
@@ -16,12 +18,13 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
+import sun.rmi.runtime.Log
 import kotlin.getValue
 import kotlin.reflect.KMutableProperty1
 
 
 class CreateMemberViewModel : ViewModel(), KoinComponent{
-
+    private val log = Logger.withTag("CreateMemberViewModel")
     private val memberRepository: MemberRepositoryImpl by inject()
     val insultCensorClient: InsultCensorClient by inject()
 
@@ -33,6 +36,8 @@ class CreateMemberViewModel : ViewModel(), KoinComponent{
 
 
     fun saveMember(){
+        _createMemberUiState.value = _createMemberUiState.value.copy(isSavingFormData = true)
+
         val state = _createMemberUiState.value
 
         val member = MemberDTO(
@@ -43,25 +48,31 @@ class CreateMemberViewModel : ViewModel(), KoinComponent{
         )
 
         viewModelScope.launch{
-            _createMemberUiState.value = _createMemberUiState.value.copy(isSavingFormData = true)
-
             val result = insultCensorClient.addMember(member)
 
             _createMemberUiState.value = when (result) {
-                is NetworkResult.Success -> _createMemberUiState.value.copy(
-                    isSavingFormData = false,
-                    isFormSubmissionSuccessful = true,
-                    errorMessage = ""
-                )
+                is NetworkResult.Success -> {
+                    val data: MemberDTO = result.data
+                    log.i ( "data sent successfully:: $data" )
+                    memberRepository.createMember(data.toEntity())
 
-                is NetworkResult.Error -> _createMemberUiState.value.copy(
-                    isSavingFormData = false,
-                    isFormSubmissionSuccessful = false,
-                    errorMessage = result.message ?: "An error occurred"
-                )
+                    _createMemberUiState.value.copy(
+                        isSavingFormData = false,
+                        isFormSubmissionSuccessful = true,
+                        errorMessage = ""
+                    )
+                }
+
+                is NetworkResult.Error -> {
+                    log.e("saving failed:: ${result.message}")
+                    _createMemberUiState.value.copy(
+                        isSavingFormData = false,
+                        isFormSubmissionSuccessful = false,
+                        errorMessage = result.message ?: "An error occurred"
+                    )
+                }
             }
 
-//            memberRepository.createMember(member)
         }
     }
 

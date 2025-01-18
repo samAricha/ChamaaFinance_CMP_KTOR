@@ -13,6 +13,7 @@ androidx-material = "1.12.0"
 androidx-test-junit = "1.2.1"
 compose-multiplatform = "1.7.0"
 junit = "4.13.2"
+kermit = "2.0.4"
 kotlin = "2.1.0"
 kotlinx-coroutines = "1.9.0"
 ktor = "3.0.2"
@@ -95,6 +96,9 @@ ktor-client-auth = { module = "io.ktor:ktor-client-auth", version.ref = "ktor" }
 core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "core-splashscreen" }
 
 kaptos = { module = "xyz.mcxross.kaptos:kaptos", version.ref = "kaptos" }
+
+
+kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
 
 
 

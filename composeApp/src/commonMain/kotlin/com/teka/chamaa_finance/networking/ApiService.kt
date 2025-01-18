@@ -73,7 +73,7 @@ class ApiService(
         } catch (e: SerializationException) {
             NetworkResult.Error(NetworkError.SERIALIZATION)
         } catch (e: ClientRequestException) {
-            handleClientError(e.response.status.value)
+            handleClientError(-1, e)
         }
     }
 
@@ -88,20 +88,25 @@ class ApiService(
                 val responseBody: T = Json.decodeFromString(serializer, responseBodyText)
                 NetworkResult.Success(responseBody)
             }
-            else -> handleClientError(response.status.value)
+            else -> {
+                val responseText = response.bodyAsText()
+                val exception = ClientRequestException(response, responseText)
+                handleClientError(response.status.value, exception)
+            }
         }
     }
 
 
 
-    private fun <T> handleClientError(statusCode: Int): NetworkResult<T, NetworkError> {
+    private fun <T> handleClientError(statusCode: Int, exception: Throwable?): NetworkResult<T, NetworkError> {
         return when (statusCode) {
-            401 -> NetworkResult.Error(NetworkError.UNAUTHORIZED)
-            409 -> NetworkResult.Error(NetworkError.CONFLICT)
-            408 -> NetworkResult.Error(NetworkError.REQUEST_TIMEOUT)
-            413 -> NetworkResult.Error(NetworkError.PAYLOAD_TOO_LARGE)
-            in 500..599 -> NetworkResult.Error(NetworkError.SERVER_ERROR)
-            else -> NetworkResult.Error(NetworkError.UNKNOWN)
+            401 -> NetworkResult.Error(NetworkError.UNAUTHORIZED, "Unauthorized access. Please check your credentials.")
+            409 -> NetworkResult.Error(NetworkError.CONFLICT, "Conflict occurred. The resource already exists or there is a conflict in the request.")
+            408 -> NetworkResult.Error(NetworkError.REQUEST_TIMEOUT, "Request timed out. Please try again.")
+            413 -> NetworkResult.Error(NetworkError.PAYLOAD_TOO_LARGE, "The payload is too large. Please reduce the size of your request and try again.")
+            in 500..599 -> NetworkResult.Error(NetworkError.SERVER_ERROR, "Server error occurred. Please try again later.")
+            else -> NetworkResult.Error(NetworkError.UNKNOWN, "An unknown error occurred. Please try again:: {$exception}")
         }
     }
+
 }

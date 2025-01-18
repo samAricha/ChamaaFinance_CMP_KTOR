@@ -89,6 +89,7 @@ fun GroupMembersScreen(
                         Icon(
                             Icons.Default.ArrowBack,
                             "",
+                            tint = MaterialTheme.colorScheme.primary
                         )
                     }
                 },
