@@ -75,6 +75,8 @@ kotlin {
 
             implementation(libs.kaptos)
 
+            implementation(libs.kermit)
+
 
 //            implementation(libs.kotlinX.dateTime)
 

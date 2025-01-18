@@ -95,9 +95,11 @@ class InsultCensorClient(
                 is NetworkResult.Error -> result
             }
         } catch (e: UnresolvedAddressException) {
-            NetworkResult.Error(NetworkError.NO_INTERNET)
+            NetworkResult.Error(NetworkError.NO_INTERNET, "no internet")
         } catch (e: SerializationException) {
-            NetworkResult.Error(NetworkError.SERIALIZATION)
+            NetworkResult.Error(NetworkError.SERIALIZATION, "serialization exception")
+        } catch (e: Exception) {
+            NetworkResult.Error(NetworkError.UNKNOWN, e.localizedMessage ?: "An unknown error occurred")
         }
     }
 
